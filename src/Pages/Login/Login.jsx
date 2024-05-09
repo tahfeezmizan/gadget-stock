@@ -18,8 +18,8 @@ const Login = () => {
 
     const onSubmit = (data) => {
         const { email, password } = data;
-
-        // console.log(data);
+        
+        console.log(data);
 
         // singIn(email, password)
         //     .then(result => {
@@ -53,9 +53,9 @@ const Login = () => {
                 <div className="flex-1">
                     <div className="card shrink-0 w-full max-w-lg p-10 ">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                            <p className="">Welcome Back</p>
+                            <h1 className="text-5xl font-bold">Log In</h1>
                             <div className="form-control">
-                                <p className="">Welcome Back</p>
-                                <h1 className="text-5xl font-bold">Log In</h1>
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
