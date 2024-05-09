@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import UseAuth from "../../Hook/UseAuth";
 
 const Login = () => {
 
-    // const { singIn } = UseAuth();
+    const { logInUser } = UseAuth();
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate()
     const location = useLocation();
@@ -18,29 +19,18 @@ const Login = () => {
 
     const onSubmit = (data) => {
         const { email, password } = data;
-        
-        console.log(data);
 
-        // singIn(email, password)
-        //     .then(result => {
-        //         const loggedInUser = result.user;
-        //         const user = { email };
-        //         toast.success('Congrs! Login Sucessfull');
-        //         navigate(location?.state ? location.state : '/');
-
-        //         axios.post('https://y-mauve-eight.vercel.app/jwt', user, { withCredentials: true })
-        //             .then(res => {
-        //                 // console.log(res.data);
-        //                 if (res.data.success) {
-        //                     navigate(location?.state ? location.state : '/');
-        //                 }
-        //             })
-        //     })
-        //     .catch(error => {
-        //         const errorText = error.message;
-        //         const errorMessage = errorText.slice(22, 40);
-        //         toast.error(`${errorMessage}`)
-        //     });
+        logInUser(email, password)
+            .then(result => {
+                const user = result.user;
+                navigate(location?.state ? location.state : '/');
+                toast.success('Congrs! Login Sucessfull');
+            })
+            .catch(error => {
+                const errorText = error.message;
+                const errorMessage = errorText.slice(22, 40);
+                toast.error(`${errorMessage}`)
+            });
     }
 
     const togglePasswordVisibility = () => {
@@ -49,7 +39,7 @@ const Login = () => {
 
     return (
         <div className="w-full md:w-8/12 mx-auto rounded-3xl py-20">
-            <div className="w-4/6 mx-auto rounded-xl overflow-hidden flex flex-col md:flex-row justify-between items-center shadow-2xl bg-base-100">
+            <div className="w-5/6 mx-auto rounded-xl overflow-hidden flex flex-col md:flex-row justify-between items-center shadow-2xl bg-base-100">
                 <div className="flex-1">
                     <div className="card shrink-0 w-full max-w-lg p-10 ">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -102,7 +92,7 @@ const Login = () => {
                 </div>
 
                 <div className="flex-1">
-                    <img src='https://images.pexels.com/photos/1251834/pexels-photo-1251834.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt="" />
+                    <img className="object-cover object-right" src='https://images.pexels.com/photos/1251834/pexels-photo-1251834.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt="" />
                 </div>
             </div>
         </div>
