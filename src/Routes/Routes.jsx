@@ -5,6 +5,10 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Queries from "../Pages/Queries/Queries";
 import MyQueries from "../Pages/Queries/MyQueries";
+import QuriesDetails from "../Pages/Queries/QuriesDetails";
+import MyQueriesBanner from "../Pages/Queries/MyQueriesBanner";
+import AddQueries from "../Pages/Queries/AddQueries";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -29,8 +33,21 @@ const router = createBrowserRouter([
             },
             {
                 path: '/myqueries',
-                element: <MyQueries />,
+                element:
+                    <> <PrivateRoute>
+                        <MyQueriesBanner /><MyQueries />
+                    </PrivateRoute></>,
             },
+            {
+                path: '/queries/:id',
+                element: <QuriesDetails />,
+            },
+            {
+                path: '/addqueries',
+                element: <PrivateRoute>
+                    <AddQueries />
+                </PrivateRoute>
+            }
         ]
     },
 ]);

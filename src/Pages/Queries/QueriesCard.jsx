@@ -4,17 +4,7 @@ import { Link } from "react-router-dom";
 const QueriesCard = ({ data }) => {
 
     const {
-        _id,
-        email,
-        userName,
-        userPhoto,
-        productName,
-        imageUrl,
-        brandName,
-        queryTitle,
-        boycottingReason,
-        date,
-    } = data;
+        _id, userName, userPhoto, productName, imageUrl, brandName, queryTitle, date } = data;
 
     return (
         <Link to={`queries/${_id}`}>
