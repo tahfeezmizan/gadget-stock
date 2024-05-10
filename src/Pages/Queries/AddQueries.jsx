@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import UseAuth from "../../Hook/UseAuth";
 
 const AddQueries = () => {
@@ -6,34 +7,49 @@ const AddQueries = () => {
     const handleAddQuries = e => {
         e.preventDefault();
         const email = user.email;
-        const username = user.displayName;
+        const userName = user.displayName;
+        const userPhoto = user.photoURL;
+
+        const today = new Date();
+        const date = today.toLocaleDateString();
 
         const form = e.target;
         const productName = form.productName.value;
         const brandName = form.brandName.value;
-        const image = form.image.value;
-        const queryTitle = parseInt(form.queryTitle.value);
+        const imageUrl = form.imageUrl.value;
+        const queryTitle = form.queryTitle.value;
+        const boycottingReason = form.boycottingReason.value;
 
-        const addQuery = { email, username, productName, image, brandName, queryTitle}
+        const addQuery = {
+            email,
+            userName,
+            userPhoto,
+            productName,
+            imageUrl,
+            brandName,
+            queryTitle,
+            boycottingReason,
+            date,
+        }
         console.log(addQuery)
 
-        fetch(``, {
+        fetch(`http://localhost:5000/queries`, {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(addQuery)
         })
             .then(res => res.json())
             .then(data => {
-                // console.log(data)
-                // if (data.insertedId) {
-                //     Swal.fire({
-                //         title: 'success',
-                //         text: 'Add New Touris Spot',
-                //         icon: 'success',
-                //         confirmButtonText: 'Ok'
-                //     })
-                //     form.reset('')
-                // }
+                console.log(data)
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'success',
+                        text: 'Add New Touris Spot',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    })
+                    form.reset('')
+                }
             })
     }
 
@@ -51,7 +67,9 @@ const AddQueries = () => {
                                 <input
                                     type="text" name="productName"
                                     placeholder="Product Name"
-                                    className="input input-bordered w-full max-w-xs" />
+                                    className="input input-bordered w-full max-w-xs"
+                                    required
+                                />
                             </div>
                             <div className="flex-1 space-y-2 mb-4">
                                 <label className="md:text-lg font-medium">Brand Name</label>
@@ -60,70 +78,44 @@ const AddQueries = () => {
                                     type="text" name="brandName"
                                     placeholder="Brand Name"
                                     className="input input-bordered w-full max-w-xs"
+                                    required
                                 />
                             </div>
                         </div>
 
                         <div className="flex flex-col md:flex-row gap-0 md:gap-8">
                             <div className="flex-1 space-y-2 mb-4">
-                                <label className="md:text-lg font-medium">Average Cost</label>
+                                <label className="md:text-lg font-medium">Queries Title</label>
                                 <input
-                                    type="number" name="queryTitle"
+                                    type="text" name="queryTitle"
                                     placeholder="Query Title"
                                     className="input input-bordered w-full max-w-xs"
+                                    required
                                 />
                             </div>
 
                             <div className="flex-1 space-y-2 mb-4">
                                 <label className="md:text-lg font-medium">Image Url</label>
                                 <input
-                                    type="text" name="image"
-                                    placeholder="Product Image Url"
+                                    type="text" name="imageUrl"
+                                    placeholder="Product ImageUrl Url"
                                     className="input input-bordered w-full max-w-xs"
+                                    required
                                 />
                             </div>
                         </div>
 
-                        <div className="flex flex-col md:flex-row gap-0 md:gap-8">
-                            <div className="flex-1 space-y-2 mb-4">
-                                <label className="md:text-lg font-medium block">Country Name</label>
-                                <input
-                                    type="text" name="image"
-                                    placeholder="Product Image Url"
-                                    className="input input-bordered w-full max-w-xs"
-                                />
-
-                            </div>
-                            <div className="flex-1 space-y-2 mb-4">
-                                <label className="md:text-lg font-medium block">Seasonality</label>
-                                <input
-                                    type="text" name="image"
-                                    placeholder="Product Image Url"
-                                    className="input input-bordered w-full max-w-xs"
-                                />
-                            </div>
+                        <div className=" space-y-2 mb-4">
+                            <label className="md:text-lg font-medium block">Boycotting Reason Details</label>
+                            <textarea
+                                name='boycottingReason'
+                                placeholder="Boycotting Reason Details                                "
+                                className="textarea textarea-bordered  w-full"
+                                required></textarea>
                         </div>
-                        <div className="flex flex-col md:flex-row gap-0 md:gap-8">
-                            <div className="flex-1 space-y-2 mb-4">
-                                <label className="md:text-lg font-medium">Total Visitors PerYear</label>
-                                <input
-                                    type="text" name="image"
-                                    placeholder="Product Image Url"
-                                    className="input input-bordered w-full max-w-xs"
-                                />
-                            </div>
 
-                            <div className="flex-1 space-y-2 mb-4">
-                                <label className="md:text-lg font-medium block">Travel Time</label>
-                                <input
-                                    type="text" name="image"
-                                    placeholder="Product Image Url"
-                                    className="input input-bordered w-full max-w-xs"
-                                />
-                            </div>
-                        </div>
                         <div className="form-control my-6">
-                            <button className="btn bg-[#d01818] hover:bg-[#0d1637] text-white text-xl font-bold">Add New Query</button>
+                            <button className="btn btn-outline  border hover:bg-[#d01818] px-10 text-xl">Add New Query</button>
                         </div>
                     </form>
                 </div >

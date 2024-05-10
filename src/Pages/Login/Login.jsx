@@ -41,7 +41,7 @@ const Login = () => {
 
     return (
         <div className="w-full md:w-8/12 mx-auto rounded-3xl py-20">
-            <div className="w-5/6 mx-auto rounded-xl overflow-hidden flex flex-col md:flex-row justify-between items-center shadow-2xl bg-base-100">
+            <div className="w-4/6 mx-auto rounded-xl overflow-hidden flex flex-col md:flex-row justify-between items-center shadow-2xl bg-base-100">
                 <div className="flex-1">
                     <div className="card shrink-0 w-full max-w-lg p-10 ">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
