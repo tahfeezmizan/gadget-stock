@@ -1,5 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
-import { GithubAuthProvider, GoogleAuthProvider, TwitterAuthProvider } from "firebase/auth/cordova";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/Firebase.config";
 
@@ -8,7 +7,7 @@ export const AuthContext = createContext();
 // social login 
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
-const twitterProvider = new TwitterAuthProvider();
+
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState([]);
@@ -34,12 +33,6 @@ const AuthProvider = ({ children }) => {
     const githubLogin = () => {
         setIsLoading(true)
         return signInWithPopup(auth, githubProvider);
-    }
-
-    // twitter 
-    const twitterLogin = () => {
-        setIsLoading(true)
-        return signInWithPopup(auth, twitterProvider);
     }
 
     // update user 
@@ -74,7 +67,6 @@ const AuthProvider = ({ children }) => {
         logInUser,
         googleLogin,
         githubLogin,
-        twitterLogin,
         userProfileUpdate,
         logOut
     }

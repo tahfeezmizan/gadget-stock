@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import UseAuth from '../../../Hook/UseAuth';
+import profileAvater from '../../../assets/profileAvater.jpg'
 
 const Navbar = () => {
     const { user, logOut } = UseAuth();
@@ -50,9 +51,7 @@ const Navbar = () => {
                         <div className="dropdown dropdown-end">
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">
-                                    <img alt="" src=""
-                                    // user?.photoURL || profileAvater
-                                    />
+                                    <img alt="" src={user?.photoURL || profileAvater} />
 
                                 </div>
                             </div>

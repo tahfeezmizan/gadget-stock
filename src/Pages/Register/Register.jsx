@@ -3,6 +3,7 @@ import UseAuth from "../../Hook/UseAuth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const Register = () => {
     const { createUser, } = UseAuth();
@@ -22,11 +23,12 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const registerData = result?.user;
+                toast.success('User Register Sucessfully')
                 // console.log(registerData);
             })
             .catch(error => {
                 const errorMessage = error.message;
-                // toast.error(`${errorMessage}`)
+                toast.error(`${errorMessage}`)
                 console.log(errorMessage);
             });
     };

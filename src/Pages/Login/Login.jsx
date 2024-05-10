@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import UseAuth from "../../Hook/UseAuth";
+import { FcGoogle } from "react-icons/fc";
+import { ToastBar, toast } from "react-hot-toast";
 
 const Login = () => {
 
-    const { logInUser } = UseAuth();
+    const { logInUser, googleLogin } = UseAuth();
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate()
     const location = useLocation();
@@ -83,11 +85,32 @@ const Login = () => {
                             </div>
                             <div className="form-control pt-5">
                                 <button className="btn w-full bg-[#d01818] hover:bg-[#0d1637] text-white text-xl font-bold">Login</button>
+                            </div>
+                        </form>
+                        {/* third party login method */}
+                        <div className="text-center">
+                            <div className="divider pb-3">or connected with</div>
+                            <div className=''>
+                                <button
+                                    onClick={() => googleLogin()
+                                        .then(result => {
+                                            toast.success('Congrs! Google Login Sucessfull');
+                                            navigate(location?.state ? location.state : '/');
+                                        })
+                                        .catch((error) => {
+                                            const errorText = error.message;
+                                            console.log(errorText)
+                                            const errorMessage = errorText.slice(22, 40);
+                                            toast.error(errorMessage)
+                                        })
+                                    }
+                                    className='btn btn-sm text-2xl rounded-3xl px-6 bg-transparent hover:bg-transparent '><FcGoogle />
+                                </button>
 
                             </div>
-                            <h3 className="text-center pt-3">Need an account? <Link to="/register" className="text-blue-600 hover:text-[#d01818] font-bold">Create Account</Link></h3>
-                        </form>
+                        </div>
 
+                        <h3 className="text-center pt-5">Need an account? <Link to="/register" className="text-blue-600 hover:text-[#d01818] font-bold">Create Account</Link></h3>
                     </div>
                 </div>
 
