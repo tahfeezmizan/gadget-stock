@@ -9,6 +9,10 @@ export default {
       fontFamily: {
         Jost: "'Jost', sans-serif",
         Roboto: "'Roboto', sans-serif",
+      },
+      lineHeight: {
+        'extra-loose': '2.5',
+        '12': '3rem',
       }
     },
   },
