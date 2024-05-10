@@ -6,3 +6,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.homeBanner {
+    height: calc(100vh - 120px);
+}
