@@ -6,9 +6,9 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation()
     const navigate = useNavigate()
 
-    // if (isLoading) {
-    //     return <span className="loading loading-spinner text-error text-5xl"></span>
-    // }
+    if (isLoading) {
+        return <span className="loading loading-spinner text-error text-5xl"></span>
+    }
 
     if (user) {
         return children
