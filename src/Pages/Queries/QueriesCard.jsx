@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const QueriesCard = ({ data }) => {
 
     const {
-        _id, userName, userPhoto, productName, imageUrl, brandName, queryTitle, date } = data;
+        _id, userName, userPhoto, productName, imageUrl, brandName, queryTitle, date, boycottingReason } = data;
 
     return (
         <Link to={`/queriesDetails/${_id}`}>
@@ -17,6 +17,8 @@ const QueriesCard = ({ data }) => {
                 <div className="card-body">
                     <p className="text-gray-500 flex items-center gap-2 font-Jost"><span className="text-lg"><CiCalendarDate /></span> {date}</p>
                     <h2 className="text-xl card-title font-Jost capitalize my-1 font-medium">{queryTitle}</h2>
+
+                    <p className="pb-2" title={boycottingReason}>{boycottingReason.substring(0, 75)}...</p>
 
                     <div className="flex items-center gap-6 pb-4 border-b">
                         <p className=""> Brand Name: <span className="font-semibold"> <br /> {brandName}</span></p>
@@ -31,7 +33,9 @@ const QueriesCard = ({ data }) => {
                                 <p className="text-gray-500">UnKnown</p>
                             </div>
                         </div>
-                        <button className="btn btn-warning">Recomandation</button>
+                        <Link to={`/queriesDetails/${_id}`}>
+                            <button className="btn btn-warning">Recomandation</button>
+                        </Link>
                     </div>
                 </div>
             </div>

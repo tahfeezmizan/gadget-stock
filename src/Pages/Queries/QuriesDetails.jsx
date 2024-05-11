@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import AddRecommendation from "./AddRecommendation";
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 
 
 const QuriesDetails = () => {
@@ -14,7 +16,7 @@ const QuriesDetails = () => {
                 setCard(data)
             })
     }, [id]);
-    
+
     // const {
     //     _id, email, userName, userPhoto, productName, imageUrl, brandName, queryTitle, boycottingReason, date,
     // } = data;
@@ -46,6 +48,32 @@ const QuriesDetails = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            {/* <AddRecommendation></AddRecommendation> */}
+            <div>
+                <Tabs isLazy>
+                    <TabList>
+                        <Tab className="font-Jost text-xl ">Recommendation</Tab>
+                        <Tab className="font-Jost text-xl ">Add Recommendation</Tab>
+                        <Tab className="font-Jost text-xl ">Review</Tab>
+                    </TabList>
+                    <TabPanels>
+                        {/* initially mounted */}
+                        <TabPanel>
+                            <p>one!</p>
+                        </TabPanel>
+
+                        {/* initially not mounted */}
+                        <TabPanel>
+                            <AddRecommendation card={card} />
+                        </TabPanel>
+
+                        <TabPanel>
+                            <p>two!</p>
+                        </TabPanel>
+                    </TabPanels>
+                </Tabs>
             </div>
         </div>
     );

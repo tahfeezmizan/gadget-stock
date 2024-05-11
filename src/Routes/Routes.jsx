@@ -2,14 +2,14 @@ import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "../Layout/RootLayout";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
-import Register from "../Pages/Register/Register";
-import Queries from "../Pages/Queries/Queries";
-import MyQueries from "../Pages/Queries/MyQueries/MyQueries";
-import QuriesDetails from "../Pages/Queries/QuriesDetails";
-import MyQueriesBanner from "../Pages/Queries/MyQueries/MyQueriesBanner";
 import AddQueries from "../Pages/Queries/MyQueries/AddQueries";
-import PrivateRoute from "./PrivateRoute";
+import MyQueries from "../Pages/Queries/MyQueries/MyQueries";
+import MyQueriesBanner from "../Pages/Queries/MyQueries/MyQueriesBanner";
 import UpdateQueries from "../Pages/Queries/MyQueries/UpdateQueries";
+import Queries from "../Pages/Queries/Queries";
+import QuriesDetails from "../Pages/Queries/QuriesDetails";
+import Register from "../Pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -54,7 +54,9 @@ const router = createBrowserRouter([
             {
                 path: '/updatequeries/:id',
                 element: <UpdateQueries></UpdateQueries>
-            }
+            },
+           
+           
         ]
     },
 ]);
