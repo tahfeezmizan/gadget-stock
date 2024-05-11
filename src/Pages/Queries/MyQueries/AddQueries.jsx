@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import UseAuth from "../../Hook/UseAuth";
+import UseAuth from "../../../Hook/UseAuth";
 
 const AddQueries = () => {
     const { user } = UseAuth();

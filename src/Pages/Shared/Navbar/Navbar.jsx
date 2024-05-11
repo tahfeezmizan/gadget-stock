@@ -9,7 +9,7 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/queries'>Queries</NavLink></li>
-        {user ?
+        {user?.email ?
             <>
                 <li><NavLink to='/queries'>Recommendations For Me</NavLink></li>
                 <li><NavLink to='/myqueries'>My Queries</NavLink></li>
@@ -54,7 +54,7 @@ const Navbar = () => {
                         </label>
                     </div> */}
 
-                    {user ?
+                    {user?.email ?
                         <div className="dropdown dropdown-end">
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">

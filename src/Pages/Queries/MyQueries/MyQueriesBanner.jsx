@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import sliderBg from '../../assets/slider-bg.jpg';
+import sliderBg from '../../../assets/slider-bg.jpg';
 
 const MyQueriesBanner = () => {
     return (

@@ -14,8 +14,7 @@ const QuriesDetails = () => {
                 setCard(data)
             })
     }, [id]);
-    console.log(card);
-
+    
     // const {
     //     _id, email, userName, userPhoto, productName, imageUrl, brandName, queryTitle, boycottingReason, date,
     // } = data;
