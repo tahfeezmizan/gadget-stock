@@ -9,6 +9,7 @@ import QuriesDetails from "../Pages/Queries/QuriesDetails";
 import MyQueriesBanner from "../Pages/Queries/MyQueries/MyQueriesBanner";
 import AddQueries from "../Pages/Queries/MyQueries/AddQueries";
 import PrivateRoute from "./PrivateRoute";
+import UpdateQueries from "../Pages/Queries/MyQueries/UpdateQueries";
 
 const router = createBrowserRouter([
     {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
                     </PrivateRoute></>,
             },
             {
-                path: '/queries/:id',
+                path: '/queriesDetails/:id',
                 element: <PrivateRoute>
                     <QuriesDetails />
                 </PrivateRoute>,
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <AddQueries />
                 </PrivateRoute>
+            },
+            {
+                path: '/updatequeries/:id',
+                element: <UpdateQueries></UpdateQueries>
             }
         ]
     },

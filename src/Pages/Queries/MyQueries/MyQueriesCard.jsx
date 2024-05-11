@@ -1,5 +1,6 @@
 import React from 'react';
 import { CiCalendarDate } from 'react-icons/ci';
+import { Link } from 'react-router-dom';
 
 const MyQueriesCard = ({ data, handleDelete }) => {
     const { _id, userName, userPhoto, productName, imageUrl, brandName, queryTitle, date } = data;
@@ -16,16 +17,17 @@ const MyQueriesCard = ({ data, handleDelete }) => {
                 <h2 className="text-xl card-title font-Jost pb-2 capitalize font-medium">{queryTitle}</h2>
 
                 <div className="flex items-center gap-6 pb-4 border-b">
-                    <p className=""> Brand Name: <span className="font-semibold"> <br /> {brandName}</span></p>
+                    <p className="">Brand Name: <span className="font-semibold"> <br /> {brandName}</span></p>
                     <p className="">Product Name: <span className="font-semibold"> <br /> {productName}</span></p>
                 </div>
-
                 <div className="flex items-center justify-between gap-3 pt-4 pb-2">
-
                     <button onClick={() => handleDelete(_id)} className='btn btn-outline btn-error btn-sm hover:text-white'>Delete</button>
-                    <button className='btn btn-sm btn-outline btn-info'>Update</button>
-                    <button className='btn-sm btn btn-outline btn-primary'>View Details</button>
-
+                    <Link to={`/updatequeries/${_id}`}>
+                        <button className='btn btn-sm btn-outline btn-info'>Update</button>
+                    </Link>
+                    <Link to={`queries/${_id}`}>
+                        <button className='btn-sm btn btn-outline btn-primary'>View Details</button>
+                    </Link>
                 </div>
             </div>
         </div>

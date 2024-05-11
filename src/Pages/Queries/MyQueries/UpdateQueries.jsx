@@ -1,18 +1,25 @@
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import UseAuth from "../../../Hook/UseAuth";
 
-const AddQueries = () => {
-    const { user } = UseAuth();
+const UpdateQueries = () => {
+    const [data, setData] = useState([]);
+    const { id } = useParams()
+    // const navigate = useNavigate();
 
-    const handleAddQuries = e => {
+    useEffect(() => {
+        fetch(`http://localhost:5000/findupdatequeries/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                setData(data)
+                // console.log(data);
+            })
+    }, [])
+
+    const handleUpdateQuries = e => {
         e.preventDefault();
-        const email = user.email;
-        const userName = user.displayName;
-        const userPhoto = user.photoURL;
-
-        const today = new Date();
-        const date = today.toLocaleDateString();
-
+        // const today = new Date();
+        // const date = today.toLocaleDateString();
         const form = e.target;
         const productName = form.productName.value;
         const brandName = form.brandName.value;
@@ -20,35 +27,28 @@ const AddQueries = () => {
         const queryTitle = form.queryTitle.value;
         const boycottingReason = form.boycottingReason.value;
 
-        const addQuery = {
-            email,
-            userName,
-            userPhoto,
-            productName,
-            imageUrl,
-            brandName,
-            queryTitle,
-            boycottingReason,
-            date,
+        const updateQuery = {
+            productName, imageUrl, brandName, queryTitle, boycottingReason,
         }
-        console.log(addQuery)
+        console.log(updateQuery);
 
-        fetch(`http://localhost:5000/queries`, {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(addQuery)
+        // update method
+        fetch(`http://localhost:5000/queriesupdate/${id}`, {
+            method: 'PATCH',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(updateQuery)
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                if (data.insertedId) {
+                console.log(data);
+                if (data.modifiedCount > 0) {
                     Swal.fire({
                         title: 'success',
-                        text: 'Add New Touris Spot',
+                        text: 'Tourist Spot Update Successfully',
                         icon: 'success',
                         confirmButtonText: 'Ok'
                     })
-                    form.reset('')
+                    navigate('/myqueries')
                 }
             })
     }
@@ -59,14 +59,15 @@ const AddQueries = () => {
                 <div className="max-w-screen-md mx-auto border rounded-lg p-12">
                     <h1 className="text-2xl md:text-5xl text-center font-bold pb-5">Add New Quries</h1>
 
-                    <form onSubmit={handleAddQuries}>
+                    <form onSubmit={handleUpdateQuries}>
                         <div className="flex flex-col md:flex-row gap-0 md:gap-8">
                             <div className="flex-1 space-y-2 mb-4">
                                 <label className="md:text-lg font-medium">Product Name</label>
                                 <input
                                     type="text" name="productName"
                                     placeholder="Product Name"
-                                    className="input input-bordered w-full max-w-xs"
+                                    defaultValue={data.productName}
+                                    className="input input-bordered font-semibold w-full max-w-xs"
                                     required
                                 />
                             </div>
@@ -76,45 +77,45 @@ const AddQueries = () => {
                                 <input
                                     type="text" name="brandName"
                                     placeholder="Brand Name"
+                                    defaultValue={data.brandName}
                                     className="input input-bordered w-full max-w-xs"
                                     required
                                 />
                             </div>
                         </div>
-
                         <div className="flex flex-col md:flex-row gap-0 md:gap-8">
                             <div className="flex-1 space-y-2 mb-4">
                                 <label className="md:text-lg font-medium">Queries Title</label>
                                 <input
                                     type="text" name="queryTitle"
                                     placeholder="Query Title"
+                                    defaultValue={data.queryTitle}
                                     className="input input-bordered w-full max-w-xs"
                                     required
                                 />
                             </div>
-
                             <div className="flex-1 space-y-2 mb-4">
                                 <label className="md:text-lg font-medium">Image Url</label>
                                 <input
                                     type="text" name="imageUrl"
                                     placeholder="Product ImageUrl Url"
+                                    defaultValue={data.imageUrl}
                                     className="input input-bordered w-full max-w-xs"
                                     required
                                 />
                             </div>
                         </div>
-
                         <div className=" space-y-2 mb-4">
                             <label className="md:text-lg font-medium block">Boycotting Reason Details</label>
                             <textarea
                                 name='boycottingReason'
-                                placeholder="Boycotting Reason Details                                "
+                                placeholder="Boycotting Reason Details"
+                                defaultValue={data.boycottingReason}
                                 className="textarea textarea-bordered  w-full"
                                 required></textarea>
                         </div>
-
                         <div className="form-control my-6">
-                            <button className="btn btn-outline  border hover:bg-[#d01818] px-10 text-xl">Add New Query</button>
+                            <button className="btn btn-outline  border hover:bg-[#d01818] px-10 text-xl">Update Query</button>
                         </div>
                     </form>
                 </div >
@@ -123,4 +124,4 @@ const AddQueries = () => {
     );
 };
 
-export default AddQueries;
+export default UpdateQueries;

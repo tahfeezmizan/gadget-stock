@@ -7,7 +7,7 @@ const QueriesCard = ({ data }) => {
         _id, userName, userPhoto, productName, imageUrl, brandName, queryTitle, date } = data;
 
     return (
-        <Link to={`queries/${_id}`}>
+        <Link to={`/queriesDetails/${_id}`}>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <figure className="bg-gray-100">
                     <div className="h-64 overflow-hidden border-red-600">
@@ -37,9 +37,7 @@ const QueriesCard = ({ data }) => {
             </div>
 
             {/* <div className="bg-white border rounded-xl flex justify-around flex-col hover:shadow-lg duration-500 overflow-hidden">
-                
-                
-            </div> */}
+                </div> */}
         </Link>
     );
 };

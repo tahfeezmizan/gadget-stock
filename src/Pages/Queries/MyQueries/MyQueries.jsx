@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import MyQueriesCard from "./MyQueriesCard";
-import UseAuth from "../../../Hook/UseAuth";
-import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import UseAuth from "../../../Hook/UseAuth";
+import MyQueriesCard from "./MyQueriesCard";
 
 
 const MyQueries = () => {
