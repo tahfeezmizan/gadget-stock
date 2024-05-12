@@ -15,7 +15,7 @@ const AddRecommendation = ({ card }) => {
         const date = today.toLocaleDateString();
 
         const recommendationTitle = form.recommendationTitle.value;
-        const recommendedName = form.recommendedName.value;
+        const recommendedProductName = form.recommendedProductName.value;
         const recommendedImage = form.recommendedImage.value;
         const recommendationReason = form.recommendationReason.value;
 
@@ -28,7 +28,7 @@ const AddRecommendation = ({ card }) => {
         const imageUrl = card?.imageUrl;
 
         const recommendation = {
-            recommenderEmail, recommenderName, date, recommendationTitle, recommendedName, recommendedImage, recommendationReason, queryId, queryTitle, productName, imageUrl,
+            recommenderEmail, recommenderName, date, recommendationTitle, recommendedProductName, recommendedImage, recommendationReason, queryId, queryTitle, productName, imageUrl,
             queryCreator: {
                 userEmail, userName,
             }
@@ -77,7 +77,7 @@ const AddRecommendation = ({ card }) => {
                             <label className="font-medium block">Recommended product Name</label>
 
                             <input
-                                type="text" name="recommendedName"
+                                type="text" name="recommendedProductName"
                                 placeholder="Recommended product Name"
                                 className="input input-bordered rounded-none w-full"
                                 required

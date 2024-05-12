@@ -11,6 +11,7 @@ import QuriesDetails from "../Pages/Queries/QuriesDetails";
 import Register from "../Pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import MyRecommendation from "../Pages/Queries/Recommendation/MyRecommendation";
+import RecommendationsForMe from "../Pages/Queries/Recommendation/RecommendationsForMe";
 
 const router = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
             {
                 path: '/myrecommendation',
                 element: <MyRecommendation />
+            },
+            {
+                path: '/recommendationsforme',
+                element: <RecommendationsForMe />
             },
         ]
     },
