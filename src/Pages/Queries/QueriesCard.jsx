@@ -17,9 +17,11 @@ const QueriesCard = ({ data }) => {
                 <div className="card-body">
                     <p className="text-gray-500 flex items-center gap-2 font-Jost"><span className="text-lg"><CiCalendarDate /></span> {date}</p>
                     <h2 className="text-xl card-title font-Jost capitalize my-1 font-medium">{queryTitle}</h2>
-
-                    <p className="pb-2" title={boycottingReason}>{boycottingReason.substring(0, 75)}...</p>
-
+                    {boycottingReason && (
+                        <p className="pb-2" title={boycottingReason}>Alternation Reason:
+                            <span className="font-semibold">{boycottingReason.substring(0, 70)}...</span>
+                        </p>
+                    )}
                     <div className="flex items-center gap-6 pb-4 border-b">
                         <p className=""> Brand Name: <span className="font-semibold"> <br /> {brandName}</span></p>
                         <p className="">Product Name: <span className="font-semibold"> <br /> {productName}</span></p>

@@ -20,16 +20,19 @@ const AddRecommendation = ({ card }) => {
         const recommendationReason = form.recommendationReason.value;
 
         //query data and query creator data
-        const queryId = card._id;
-        const userEmail = card.email;
-        const userName = card.userName;
-        const queryTitle = card.queryTitle;
-        const productName = card.productName;
+        const queryId = card?._id;
+        const userEmail = card?.email;
+        const userName = card?.userName;
+        const queryTitle = card?.queryTitle;
+        const productName = card?.productName;
 
         const recommendation = {
-            recommenderEmail, recommenderName, date, recommendationTitle, recommendedName, recommendedImage, recommendationReason, queryId, userEmail, userName, queryTitle, productName
+            recommenderEmail, recommenderName, date, recommendationTitle, recommendedName, recommendedImage, recommendationReason, queryId, queryTitle, productName,
+            queryCreator: {
+                userEmail, userName,
+            }
         }
-        console.log(recommendation)
+        console.table(recommendation)
 
         fetch(`http://localhost:5000/recommendation`, {
             method: "POST",
