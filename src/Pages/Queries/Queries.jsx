@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import QueriesCard from './QueriesCard';
+import UseAuth from '../../Hook/UseAuth';
 
 const Queries = () => {
+    const { user } = UseAuth();
     const [card, setCard] = useState([]);
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetch(`http://localhost:5000/queries`)
@@ -13,12 +15,6 @@ const Queries = () => {
                 setIsLoading(false)
             })
     }, []);
-    console.log(card);
-
-    // sorting method
-    // const data = useLoaderData()
-    // const [showData, setShowData] = useState(data)
-    // const sorted = [...data].sort()
 
     return (
         <div className="hero bg-base-200">
@@ -36,7 +32,8 @@ const Queries = () => {
                         {
                             card?.map(data => <QueriesCard
                                 data={data}
-                                key={card._id}></QueriesCard>)
+                                key={data._id}
+                            ></QueriesCard>)
                         }
                     </div>
                 }

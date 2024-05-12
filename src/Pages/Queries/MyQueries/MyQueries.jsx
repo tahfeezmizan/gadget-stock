@@ -45,7 +45,6 @@ const MyQueries = () => {
                             setCard(remaining)
                         }
                     })
-
             }
         });
     };

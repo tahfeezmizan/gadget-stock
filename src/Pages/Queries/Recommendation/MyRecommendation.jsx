@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import UseAuth from '../../../Hook/UseAuth';
 import { RxCross2 } from 'react-icons/rx';
-import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import UseAuth from '../../../Hook/UseAuth';
 
 const MyRecommendation = () => {
     const { user } = UseAuth();
-    const [myRecommendation, setMyRecommendation] = useState([]);
+    const [recommendation, setRecommendation] = useState([]);
 
     useEffect(() => {
         if (user?.email) {
             fetch(`http://localhost:5000/recommendation/${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
-                    setMyRecommendation(data)
+                    setRecommendation(data);
                 })
         }
     }, [user?.email]);
-    console.log(myRecommendation);
+    // console.log(recommendation);
 
     const handleDelete = id => {
         Swal.fire({
@@ -42,8 +41,8 @@ const MyRecommendation = () => {
                                 text: "Your Tourist Spot has been deleted.",
                                 icon: "success"
                             });
-                            const remaining = myRecommendation.filter(spot => spot._id !== id);
-                            setMyRecommendation(remaining)
+                            const remaining = recommendation.filter(recom => recom._id !== id);
+                            setRecommendation(remaining)
                         }
                     })
 
@@ -53,7 +52,7 @@ const MyRecommendation = () => {
 
     return (
         <div className="w-full md:w-8/12 mx-auto rounded-3xl py-20">
-            <h1 className="text-2xl pb-5 font-bold">My Recommendation <span className='bg-green-300  text-base px-4 rounded-3xl'>{myRecommendation.length}</span> </h1>
+            <h1 className="text-2xl pb-5 font-bold">My Recommendation <span className='bg-green-300  text-base px-4 rounded-3xl'>{recommendation.length}</span> </h1>
 
             <div className="overflow-x-auto">
                 <table className="table">
@@ -68,10 +67,10 @@ const MyRecommendation = () => {
                         </tr>
                     </thead>
                     {
-                        myRecommendation.map(data => <>
-                            <tbody>
+                        recommendation?.map(data => (
+                            <tbody key={data._id}>
                                 <tr>
-                                    <td className='border'><img className="w-32" src={data.img} alt="" /></td>
+                                    <td className='border'><img className="w-24" src={data.imageUrl} alt="" /></td>
                                     <td className='border'>{data.queryTitle}</td>
                                     <td className='border'>{data.productName}</td>
                                     <td className='border'>{data.recommendedProductName}</td>
@@ -81,7 +80,7 @@ const MyRecommendation = () => {
                                     </th>
                                 </tr>
                             </tbody>
-                        </>)
+                        ))
                     }
                 </table>
             </div>
