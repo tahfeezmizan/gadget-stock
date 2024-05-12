@@ -25,9 +25,10 @@ const AddRecommendation = ({ card }) => {
         const userName = card?.userName;
         const queryTitle = card?.queryTitle;
         const productName = card?.productName;
+        const imageUrl = card?.imageUrl;
 
         const recommendation = {
-            recommenderEmail, recommenderName, date, recommendationTitle, recommendedName, recommendedImage, recommendationReason, queryId, queryTitle, productName,
+            recommenderEmail, recommenderName, date, recommendationTitle, recommendedName, recommendedImage, recommendationReason, queryId, queryTitle, productName, imageUrl,
             queryCreator: {
                 userEmail, userName,
             }
@@ -108,7 +109,6 @@ const AddRecommendation = ({ card }) => {
                     </form>
                 </div >
             </div >
-
         </div>
     );
 };

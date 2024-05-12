@@ -17,19 +17,17 @@ const MyRecommendation = () => {
     }, [user?.email]);
     console.log(myRecommendation);
 
-
     return (
         <div className="w-full md:w-8/12 mx-auto rounded-3xl py-20">
             <h1 className="text-2xl">My Recommendation</h1>
+
             <div className="overflow-x-auto">
                 <table className="table">
                     <thead>
                         <tr>
                             <th>Query Title</th>
                             <th>Product Name</th>
-                            <th>Service Name</th>
-                            <th>Service Name</th>
-                            <th>Price</th>
+                            <th>Recommendation Title</th>
                             <th>Data</th>
                             <th></th>
                         </tr>
@@ -40,7 +38,7 @@ const MyRecommendation = () => {
                                 <tr>
                                     <td>{data.queryTitle}</td>
                                     <td>{data.productName}</td>
-                                    <td>{data.productNam}</td>
+                                    <td>{data.recommendationTitle}</td>
                                     <td>{data.productNam}</td>
                                     <td>{data.service_price}</td>
                                     <td>{data.date}</td>
