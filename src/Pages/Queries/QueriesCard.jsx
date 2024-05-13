@@ -53,7 +53,7 @@ const QueriesCard = ({ data }) => {
                             </div>
                         </div>
                         <Link to={`/queriesDetails/${_id}`}>
-                            <button className="btn btn-warning rounded-none btn-sm text-lg font-Jost">Recomandation</button>
+                            <button className="btn btn-warning text-white rounded-none btn-sm text-lg font-Jost">Recomandation</button>
                         </Link>
                     </div>
                 </div>

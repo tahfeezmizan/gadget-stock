@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Banner from './Banner';
-import Queries from '../Queries/Queries';
-import QueriesCard from '../Queries/QueriesCard';
 import { Link } from 'react-router-dom';
 import { API_URL } from '../../constant';
+import QueriesCard from '../Queries/QueriesCard';
+import Banner from './Banner';
 
 const Home = () => {
     const [card, setCard] = useState([]);
@@ -26,8 +25,8 @@ const Home = () => {
 
             <div className="hero bg-base-200">
                 <div className="w-full lg:w-5/6 xl:w-8/12 mx-auto px-2 lg:px-0 py-10 md:py-12 lg:py-20">
-                    <div className="my-10">
-                        <h2 className="text-3xl md:text-5xl font-bold pl-2">TOP PRODUCTS</h2>
+                    <div className="my-10 pb-5">
+                        <h2 className="text-3xl md:text-5xl font-bold pl-2">TOP Queries</h2>
                     </div>
 
                     {isLoading ?
