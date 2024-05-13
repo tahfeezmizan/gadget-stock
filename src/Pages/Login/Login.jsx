@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { API_URL } from "../../constant";
 
 const Login = () => {
 
@@ -24,9 +25,18 @@ const Login = () => {
 
         logInUser(email, password)
             .then(result => {
-                const user = result.user;
-                navigate(location?.state ? location.state : '/');
+                const loggedUser = result.loggedUser;
+                // navigate(location?.state ? location.state : '/');
                 toast.success('Congrs! Login Sucessfull');
+
+                const user = { email };
+                axios.post(`${API_URL}/jwt`, user)
+                    .then(res => {
+                        console.log(res.data);
+                        // if (res.data.success) {
+                        //     navigate(location?.state ? location.state : '/');
+                        // }
+                    })
             })
             .catch(error => {
                 const errorText = error.message;

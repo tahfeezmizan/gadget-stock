@@ -1,8 +1,7 @@
-li,
+/* li,
 .login a,
 .logout {
     font-size: 16px;
-    color: black;
     font-weight: 500;
     transition: 0.3 ease-in;
 }
@@ -10,7 +9,6 @@ li,
 li a.active,
 .login a.active {
     background: transparent !important;
-    color: black !important;
     font-size: 16px;
     font-weight: 700;
 }
@@ -18,7 +16,7 @@ li a.active,
 li a:hover,
 .logout:hover,
 .login a:hover {
-    color: black !important;
+    color: gray !important;
     background: transparent !important;
 }
 
@@ -44,4 +42,4 @@ li a:hover,
 .navbar ul li a.active::after,
 .navbar .login a:hover::after {
     background-color: #000;
-}
+} */

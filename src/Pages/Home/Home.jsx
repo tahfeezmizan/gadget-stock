@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { API_URL } from '../../constant';
 import QueriesCard from '../Queries/QueriesCard';
 import Banner from './Banner';
+import TinyBanner from './TinyBanner';
 
 const Home = () => {
     const [card, setCard] = useState([]);
@@ -22,6 +23,7 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
+            <TinyBanner></TinyBanner>
 
             <div className="hero bg-base-200">
                 <div className="w-full lg:w-5/6 xl:w-8/12 mx-auto px-2 lg:px-0 py-10 md:py-12 lg:py-20">
@@ -42,12 +44,6 @@ const Home = () => {
                             }
                         </div>
                     }
-
-                    <div className="pt-20 text-center">
-                        <button className="btn btn-warning rounded-none text-white px-10 text-xl">
-                            <Link to="/queries">See All Queries</Link>
-                        </button>
-                    </div>
                 </div >
             </div>
         </div>

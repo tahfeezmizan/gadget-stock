@@ -38,7 +38,7 @@ const Navbar = () => {
     );
 
     return (
-        <div className="navMenu py-2 sticky top-0 bg-white z-50">
+        <div className="navMenu py-2 sticky top-0 z-50">
             <div className="w-full lg:w-5/6 xl:w-8/12 mx-auto navbar ">
                 <div className="navbar-start">
                     <div className="dropdown">
