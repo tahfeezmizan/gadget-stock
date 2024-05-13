@@ -47,8 +47,9 @@ const AuthProvider = ({ children }) => {
 
     // sing out user
     const logOut = () => {
+        document.cookie = 'token' + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         setUser(null);
-        signOut(auth)
+        signOut(auth);
     }
 
     useEffect(() => {
@@ -59,12 +60,12 @@ const AuthProvider = ({ children }) => {
             if (currentUser) {
                 setUser(currentUser);
                 setIsLoading(false);
-                console.log(currentUser);
+                // console.log(currentUser);
 
                 if (currentUser) {
                     axios.post(`${API_URL}/jwt `, loggedUser, { withCredentials: true })
                         .then(res => {
-                            console.log('token response', res.data);
+                            // console.log('token response', res.data);
                         })
                 }
             }

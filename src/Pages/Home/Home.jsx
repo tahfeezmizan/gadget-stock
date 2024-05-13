@@ -4,6 +4,7 @@ import { API_URL } from '../../constant';
 import QueriesCard from '../Queries/QueriesCard';
 import Banner from './Banner';
 import TinyBanner from './TinyBanner';
+import Sponsors from '../Sponsors/Sponsors';
 
 const Home = () => {
     const [card, setCard] = useState([]);
@@ -46,6 +47,8 @@ const Home = () => {
                     }
                 </div >
             </div>
+
+            <Sponsors></Sponsors>
         </div>
     );
 };

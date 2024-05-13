@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import UseAuth from "../../Hook/UseAuth";
+import { API_URL } from "../../constant";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { API_URL } from "../../constant";
 
 const Login = () => {
-
     const { logInUser, googleLogin } = UseAuth();
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
@@ -25,17 +24,16 @@ const Login = () => {
 
         logInUser(email, password)
             .then(result => {
-                const loggedUser = result.loggedUser;
-                // navigate(location?.state ? location.state : '/');
-                toast.success('Congrs! Login Sucessfull');
-
                 const user = { email };
+                const loggedUser = result.loggedUser;
+                toast.success('Congrs! Login Sucessfull');
+                navigate(location?.state ? location.state : '/');
+
                 axios.post(`${API_URL}/jwt`, user)
                     .then(res => {
-                        console.log(res.data);
-                        // if (res.data.success) {
-                        //     navigate(location?.state ? location.state : '/');
-                        // }
+                        // console.log(res.data);
+                        if (res.data.success) {
+                        }
                     })
             })
             .catch(error => {
@@ -104,8 +102,14 @@ const Login = () => {
                                 <button
                                     onClick={() => googleLogin()
                                         .then(result => {
+                                            const user = { email };
                                             toast.success('Congrs! Google Login Sucessfull');
                                             navigate(location?.state ? location.state : '/');
+
+                                            axios.post(`${API_URL}/jwt`, user)
+                                                .then(res => {
+                                                    // console.log(res.data);
+                                                })
                                         })
                                         .catch((error) => {
                                             const errorText = error.message;
