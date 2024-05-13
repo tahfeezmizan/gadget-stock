@@ -56,7 +56,7 @@ const Navbar = () => {
                     </NavLink>
                 </div>
 
-                <div data-aos="fade-down" className="navbar-center hidden lg:flex">
+                <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 gap-5 felx">
                         {links}
                     </ul>

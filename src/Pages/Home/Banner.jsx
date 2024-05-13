@@ -50,7 +50,7 @@ const Banner = () => {
                                     <h4 className='text-gray-400 text-2xl font-medium md:text-xl'>Experience the Unseen!</h4>
                                     <h1 className='text-white text-3xl md:text-6xl pr-40 my-8 font-Jost font-bold'>Your Home Smart Devices & Best Solution</h1>
                                     <p></p>
-                                    <button className='btn btn-outline text-white border hover:bg-[#d01818] px-10 text-xl'>Shop Now</button>
+                                    <button className='btn btn-outline btn-warning rounded-none px-10 text-xl text-white'>Shop Now</button>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +75,7 @@ const Banner = () => {
                                     <h4 className='text-gray-400 text-2xl font-medium md:text-xl'>Experience the Unseen!</h4>
                                     <h1 className='text-white text-3xl md:text-6xl pr-40 my-8 font-Jost font-bold'>Uncovering Stories, One Trip At A Time</h1>
                                     <p></p>
-                                    <button className='btn btn-outline text-white border hover:bg-[#d01818] px-10 text-xl'>Shop Now</button>
+                                    <button className='btn btn-outline btn-warning rounded-none px-10 text-xl text-white'>Shop Now</button>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +100,7 @@ const Banner = () => {
                                     <h4 className='text-gray-400 text-2xl font-medium md:text-xl'>Experience the Unseen!</h4>
                                     <h1 className='text-white text-3xl md:text-5xl my-8 font-Jost font-bold '>Uncovering Stories, One Trip At A Time</h1>
                                     <p></p>
-                                    <button className='btn btn-outline text-white border hover:bg-[#d01818] px-10 text-xl'>Shop Now</button>
+                                    <button className='btn btn-outline btn-warning rounded-none px-10 text-xl text-white'>Shop Now</button>
                                 </div>
                             </div>
                         </div>

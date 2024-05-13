@@ -6,7 +6,6 @@ import { API_URL } from "../../constant";
 
 
 const QuriesDetails = () => {
-
     const [card, setCard] = useState([]);
     const { id } = useParams();
 
@@ -20,14 +19,9 @@ const QuriesDetails = () => {
 
     return (
         <div className='w-full lg:w-11/12 xl:w-8/12 mx-auto px-4 md:px-6 lg:px-0 py-10'>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-                <div className="rounded-2xl flex items-center justify-center flex-col  ">
-                    <div className="bg-gray-100 p-10 mb-6">
-                        <img className="max-w-96 max-h-96 rounded" src={card.imageUrl} alt="" />
-                    </div>
-                    <div className="">
-                        {/* <h1 className="text-5xl">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo natus enim iusto error deserunt voluptate eligendi temporibus rem, nihil veritatis facilis, totam porro doloribus nulla eveniet assumenda dolore in distinctio?</h1> */}
-                    </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-10">
+                <div className="bg-gray-100 rounded-2xl flex items-center justify-center p-10 mb-6">
+                    <img className="max-w-96 max-h-96 rounded" src={card.imageUrl} alt="" />
                 </div>
 
                 <div className="">
@@ -49,35 +43,34 @@ const QuriesDetails = () => {
                             <p className="text-gray-500">UnKnown</p>
                         </div>
                     </div>
-
-                    <div>
-                        <Tabs isLazy>
-                            <TabList>
-                                <Tab className="font-Jost text-xl ">Boycotting Reason</Tab>
-                                <Tab className="font-Jost text-xl ">Add Recommendation</Tab>
-                                <Tab className="font-Jost text-xl ">Review</Tab>
-                            </TabList>
-                            <TabPanels>
-                                {/* initially mounted */}
-                                <TabPanel>
-                                    <p className="font-normal ">{card.boycottingReason}</p>
-                                </TabPanel>
-
-                                {/* initially not mounted */}
-                                <TabPanel>
-                                    <AddRecommendation card={card} />
-                                </TabPanel>
-
-                                <TabPanel>
-                                    <p>two!</p>
-                                </TabPanel>
-                            </TabPanels>
-                        </Tabs>
-                    </div>
                 </div>
             </div>
 
-            {/* <AddRecommendation></AddRecommendation> */}
+
+            {/* Query Recommendataion Added Section */}
+
+            <div>
+                <Tabs isLazy>
+                    <TabList>
+                        <Tab className="font-Jost text-xl font-semibold">Boycotting Reason</Tab>
+                        <Tab className="font-Jost text-xl font-semibold">Add Recommendation</Tab>
+                        <Tab className="font-Jost text-xl font-semibold ">Review</Tab>
+                    </TabList>
+                    <TabPanels>
+                        <TabPanel>
+                            <p className="font-normal ">{card.boycottingReason}</p>
+                        </TabPanel>
+
+                        <TabPanel>
+                            <AddRecommendation card={card} />
+                        </TabPanel>
+
+                        <TabPanel>
+                            <p className="text-4xl font-Roboto">Rivew Not Found</p>
+                        </TabPanel>
+                    </TabPanels>
+                </Tabs>
+            </div>
 
         </div>
     );

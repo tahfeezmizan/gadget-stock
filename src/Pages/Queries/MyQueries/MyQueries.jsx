@@ -16,7 +16,6 @@ const MyQueries = () => {
             .then(data => {
                 setCard(data);
                 setIsLoading(false);
-                console.log(data);
             })
     }, []);
 
@@ -53,17 +52,16 @@ const MyQueries = () => {
 
     return (
         <div className="hero bg-base-200">
-            
             <div className="w-full lg:w-5/6 xl:w-8/12 mx-auto px-2 lg:px-0 py-10 md:py-12 lg:py-20">
                 <div className="my-10">
-                    <h2 className="text-3xl md:text-5xl font-bold pl-2">TOP PRODUCTS</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold pl-2">My Queries</h2>
                 </div>
 
-                {isLoading ?
+                {isLoading ? (
                     <div className="w-full flex justify-center items-center">
                         <span className="loading loading-spinner text-error text-5xl"></span>
-                    </div> :
-
+                    </div>) 
+                    : card.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
                         {
                             card?.map(data => <MyQueriesCard
@@ -71,9 +69,12 @@ const MyQueries = () => {
                                 handleDelete={handleDelete}
                                 key={card._id}></MyQueriesCard>)
                         }
-                    </div>
+                    </div>) 
+                    : (
+                        <h2 className="text-center text-4xl font-bold font-Jost ">You have no queries.</h2>
+                    )
                 }
-            </div >
+            </div>
         </div>
     );
 };

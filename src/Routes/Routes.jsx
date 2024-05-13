@@ -13,6 +13,7 @@ import RecommendationsForMe from "../Pages/Queries/Recommendation/Recommendation
 import Register from "../Pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import QueriesBanner from "../Pages/Queries/QueriesBanner";
 
 const router = createBrowserRouter([
     {
@@ -34,7 +35,9 @@ const router = createBrowserRouter([
             },
             {
                 path: '/queries',
-                element: <Queries />,
+                element: <>
+                    <QueriesBanner /> <Queries />,
+                </>
             },
             {
                 path: '/myqueries',
