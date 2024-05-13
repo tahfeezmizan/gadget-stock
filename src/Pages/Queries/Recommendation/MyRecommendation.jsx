@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { RxCross2 } from 'react-icons/rx';
 import Swal from 'sweetalert2';
 import UseAuth from '../../../Hook/UseAuth';
+import useAxiosSecure from '../../../Hook/useAxiosSecure';
 import { API_URL } from '../../../constant';
-import { Helmet } from 'react-helmet';
 
 const MyRecommendation = () => {
     const { user } = UseAuth();
+    const AxiosSecure = useAxiosSecure();
     const [recommendation, setRecommendation] = useState([]);
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/recommendation/${user?.email}`)
-                .then(res => res.json())
-                .then(data => {
-                    setRecommendation(data);
+            AxiosSecure.get(`/recommendation/${user?.email}`)
+                .then(res => {
+                    setRecommendation(res.data);
                 })
         }
     }, [user?.email]);
-    // console.log(recommendation);
 
     const handleDelete = id => {
         Swal.fire({
@@ -36,7 +36,6 @@ const MyRecommendation = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",

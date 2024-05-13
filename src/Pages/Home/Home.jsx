@@ -5,6 +5,7 @@ import QueriesCard from '../Queries/QueriesCard';
 import Banner from './Banner';
 import TinyBanner from './TinyBanner';
 import Sponsors from '../Sponsors/Sponsors';
+import Blogs from '../Blogs/Blogs';
 
 const Home = () => {
     const [card, setCard] = useState([]);
@@ -49,6 +50,7 @@ const Home = () => {
             </div>
 
             <Sponsors></Sponsors>
+            <Blogs></Blogs>
         </div>
     );
 };

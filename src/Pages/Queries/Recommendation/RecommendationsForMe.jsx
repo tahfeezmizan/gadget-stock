@@ -2,17 +2,18 @@ import { useEffect, useState } from "react";
 import UseAuth from "../../../Hook/UseAuth";
 import { API_URL } from "../../../constant";
 import { Helmet } from "react-helmet";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
 
 const RecommendationsForMe = () => {
     const { user } = UseAuth();
+    const AxiosSecure = useAxiosSecure();
     const [recommendation, setRecommendation] = useState([]);
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`${API_URL}/recommendation`)
-                .then(res => res.json())
-                .then(data => {
-                    const otherRecommendation = data.filter(re => re.recommenderEmail !== user?.email);
+            AxiosSecure.get('/recommendation')
+                .then(res => {
+                    const otherRecommendation = res.data.filter(re => re.recommenderEmail !== user?.email);
                     setRecommendation(otherRecommendation);
                 });
         }

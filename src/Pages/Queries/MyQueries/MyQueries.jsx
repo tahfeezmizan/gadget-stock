@@ -1,25 +1,26 @@
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import UseAuth from "../../../Hook/UseAuth";
-import MyQueriesCard from "./MyQueriesCard";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { API_URL } from "../../../constant";
+import MyQueriesCard from "./MyQueriesCard";
 
 
 const MyQueries = () => {
     const { user } = UseAuth();
     const [card, setCard] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const AxiosSecure = useAxiosSecure();
 
     useEffect(() => {
-        fetch(`${API_URL}/queriesuser?email=${user?.email}`, {credentials: 'include'})
-            .then(res => res.json())
-            .then(data => {
-                setCard(data);
-                console.log(data);
-                setIsLoading(false);
+        AxiosSecure.get(`/queriesuser?email=${user?.email}`)
+            .then(res => {
+                setCard(res.data);
+                setIsLoading(false)
             })
+
     }, []);
-    console.log(card);
+
 
     const handleDelete = id => {
         Swal.fire({
@@ -62,19 +63,19 @@ const MyQueries = () => {
                 {isLoading ? (
                     <div className="w-full flex justify-center items-center">
                         <span className="loading loading-spinner text-error text-5xl"></span>
-                    </div>) 
+                    </div>)
                     : card.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
-                        {
-                            card?.map(data => <MyQueriesCard
-                                data={data}
-                                handleDelete={handleDelete}
-                                key={card._id}></MyQueriesCard>)
-                        }
-                    </div>) 
-                    : (
-                        <h2 className="text-center text-4xl font-bold font-Jost ">You have no queries.</h2>
-                    )
+                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+                            {
+                                card?.map(data => <MyQueriesCard
+                                    data={data}
+                                    handleDelete={handleDelete}
+                                    key={card._id}></MyQueriesCard>)
+                            }
+                        </div>)
+                        : (
+                            <h2 className="text-center text-4xl font-bold font-Jost ">You have no queries.</h2>
+                        )
                 }
             </div>
         </div>

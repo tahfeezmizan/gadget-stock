@@ -3,21 +3,20 @@ import { CiCalendarDate } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import UseAuth from "../../Hook/UseAuth";
 import { API_URL } from "../../constant";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 const QueriesCard = ({ data }) => {
     const { user } = UseAuth();
+    const AxiosSecure = useAxiosSecure();
     const [reCount, setReCount] = useState({});
-    const [recommendation, setRecommendation] = useState([]);
     const { _id, userName, userPhoto, productName, imageUrl, brandName, queryTitle, date, boycottingReason } = data;
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`${API_URL}/recommendation/${user?.email}`)
-                .then(res => res.json())
-                .then(data => {
-                    const count = data.filter(re => re.queryTitle === queryTitle);
+            AxiosSecure.get(`/recommendation/${user?.email}`)
+                .then(res => {
+                    const count = res?.data?.filter(re => re.queryTitle === queryTitle);
                     setReCount(count);
-                    // setRecommendation(data);
                 });
         }
     }, [user?.email, queryTitle]);
