@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import UseAuth from "../../../Hook/UseAuth";
 import MyQueriesCard from "./MyQueriesCard";
+import { API_URL } from "../../../constant";
 
 
 const MyQueries = () => {
@@ -10,7 +11,7 @@ const MyQueries = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/queriesuser?email=${user?.email}`)
+        fetch(`${API_URL}/queriesuser?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setCard(data);
@@ -30,7 +31,7 @@ const MyQueries = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/queriesuser/${id}`, {
+                fetch(`${API_URL}/queriesuser/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())
@@ -52,6 +53,7 @@ const MyQueries = () => {
 
     return (
         <div className="hero bg-base-200">
+            
             <div className="w-full lg:w-5/6 xl:w-8/12 mx-auto px-2 lg:px-0 py-10 md:py-12 lg:py-20">
                 <div className="my-10">
                     <h2 className="text-3xl md:text-5xl font-bold pl-2">TOP PRODUCTS</h2>

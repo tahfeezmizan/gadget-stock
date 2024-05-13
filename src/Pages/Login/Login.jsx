@@ -1,16 +1,16 @@
 import { useState } from "react";
+import { toast } from "react-hot-toast";
+import UseAuth from "../../Hook/UseAuth";
 import { useForm } from "react-hook-form";
+import { FcGoogle } from "react-icons/fc";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import UseAuth from "../../Hook/UseAuth";
-import { FcGoogle } from "react-icons/fc";
-import { ToastBar, toast } from "react-hot-toast";
 
 const Login = () => {
 
     const { logInUser, googleLogin } = UseAuth();
     const [showPassword, setShowPassword] = useState(false);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const location = useLocation();
 
     const {

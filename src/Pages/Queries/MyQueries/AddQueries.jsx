@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import UseAuth from "../../../Hook/UseAuth";
+import { API_URL } from "../../../constant";
 
 const AddQueries = () => {
     const { user } = UseAuth();
@@ -33,7 +34,7 @@ const AddQueries = () => {
         }
         console.log(addQuery)
 
-        fetch(`http://localhost:5000/queries`, {
+        fetch(`${API_URL}/queries`, {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(addQuery)
@@ -44,7 +45,7 @@ const AddQueries = () => {
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'success',
-                        text: 'Add New Touris Spot',
+                        text: 'Add New Queries',
                         icon: 'success',
                         confirmButtonText: 'Ok'
                     })

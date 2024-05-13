@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { API_URL } from "../../../constant";
 
 const UpdateQueries = () => {
     const [data, setData] = useState([]);
     const { id } = useParams()
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/findupdatequeries/${id}`)
+        fetch(`${API_URL}/findupdatequeries/${id}`)
             .then(res => res.json())
             .then(data => {
                 setData(data)
@@ -33,7 +34,7 @@ const UpdateQueries = () => {
         console.log(updateQuery);
 
         // update method
-        fetch(`http://localhost:5000/queriesupdate/${id}`, {
+        fetch(`${API_URL}/queriesupdate/${id}`, {
             method: 'PATCH',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(updateQuery)

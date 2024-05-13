@@ -10,7 +10,7 @@ const githubProvider = new GithubAuthProvider();
 
 
 const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     const createUser = (email, password) => {
@@ -52,9 +52,11 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {
-                setUser(currentUser)
+                setUser(currentUser);
+                setIsLoading(false);
+            }
+            else {
                 setIsLoading(false)
-                console.log(currentUser)
             }
         });
         return () => unsubscribe()

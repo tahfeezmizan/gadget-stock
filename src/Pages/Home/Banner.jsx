@@ -10,13 +10,14 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Helmet } from 'react-helmet';
 
 const Banner = () => {
     return (
         <div>
-            {/* <Helmet>
-                <title>Home - </title>
-            </Helmet> */}
+            <Helmet>
+                <title>Home - Gadgets Stock React Template</title>
+            </Helmet>
             <Swiper
                 Autoplay={{
                     delay: 5000,

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { RxCross2 } from 'react-icons/rx';
 import Swal from 'sweetalert2';
 import UseAuth from '../../../Hook/UseAuth';
+import { API_URL } from '../../../constant';
+import { Helmet } from 'react-helmet';
 
 const MyRecommendation = () => {
     const { user } = UseAuth();
@@ -29,7 +31,7 @@ const MyRecommendation = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/recommendation/${id}`, {
+                fetch(`${API_URL}/recommendation/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -38,7 +40,7 @@ const MyRecommendation = () => {
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your Tourist Spot has been deleted.",
+                                text: "Your Recommendations has been deleted.",
                                 icon: "success"
                             });
                             const remaining = recommendation.filter(recom => recom._id !== id);
@@ -52,6 +54,9 @@ const MyRecommendation = () => {
 
     return (
         <div className="w-full md:w-8/12 mx-auto rounded-3xl py-20">
+            <Helmet>
+                <title>My Recommendation - Gadgets Stock React Template</title>
+            </Helmet>
             <h1 className="text-2xl pb-5 font-bold">My Recommendation <span className='bg-green-300  text-base px-4 rounded-3xl'>{recommendation.length}</span> </h1>
 
             <div className="overflow-x-auto">
@@ -70,7 +75,7 @@ const MyRecommendation = () => {
                         recommendation?.map(data => (
                             <tbody key={data._id}>
                                 <tr>
-                                    <td className='border'><img className="w-24" src={data.imageUrl} alt="" /></td>
+                                    <td className='border'><img className="w-16" src={data.imageUrl} alt="" /></td>
                                     <td className='border'>{data.queryTitle}</td>
                                     <td className='border'>{data.productName}</td>
                                     <td className='border'>{data.recommendedProductName}</td>

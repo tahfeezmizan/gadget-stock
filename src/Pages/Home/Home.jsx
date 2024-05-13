@@ -3,13 +3,14 @@ import Banner from './Banner';
 import Queries from '../Queries/Queries';
 import QueriesCard from '../Queries/QueriesCard';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../../constant';
 
 const Home = () => {
     const [card, setCard] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/queries`)
+        fetch(`${API_URL}/queries`)
             .then(res => res.json())
             .then(data => {
                 setCard(data)
@@ -22,7 +23,6 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            {/* <Queries></Queries> */}
 
             <div className="hero bg-base-200">
                 <div className="w-full lg:w-5/6 xl:w-8/12 mx-auto px-2 lg:px-0 py-10 md:py-12 lg:py-20">
@@ -45,7 +45,7 @@ const Home = () => {
                     }
 
                     <div className="pt-20 text-center">
-                        <button className="btn btn-warning text-white px-10 text-xl">
+                        <button className="btn btn-warning rounded-none text-white px-10 text-xl">
                             <Link to="/queries">See All Queries</Link>
                         </button>
                     </div>

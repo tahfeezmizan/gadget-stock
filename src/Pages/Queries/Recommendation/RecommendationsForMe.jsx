@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import UseAuth from "../../../Hook/UseAuth";
-import { RxCross2 } from "react-icons/rx";
+import { API_URL } from "../../../constant";
+import { Helmet } from "react-helmet";
 
 const RecommendationsForMe = () => {
     const { user } = UseAuth();
@@ -8,7 +9,7 @@ const RecommendationsForMe = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/recommendation`)
+            fetch(`${API_URL}/recommendation`)
                 .then(res => res.json())
                 .then(data => {
                     const otherRecommendation = data.filter(re => re.recommenderEmail !== user?.email);
@@ -20,7 +21,10 @@ const RecommendationsForMe = () => {
 
     return (
         <div className="w-full md:w-8/12 mx-auto rounded-3xl py-20">
-            <h1 className="text-2xl pb-5 font-bold">My Recommendation <span className='bg-green-300  text-base px-4 rounded-3xl'>{recommendation.length}</span> </h1>
+            <Helmet>
+                <title>Recommendations For Me - Gadgets Stock React Template</title>
+            </Helmet>
+            <h1 className="text-2xl pb-5 font-bold">Recommendations For Me<span className='bg-green-300  text-base px-4 rounded-3xl'>{recommendation.length}</span> </h1>
 
             <div className="overflow-x-auto">
                 <table className="table">

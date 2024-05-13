@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { CiCalendarDate } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import UseAuth from "../../Hook/UseAuth";
+import { API_URL } from "../../constant";
 
 const QueriesCard = ({ data }) => {
     const { user } = UseAuth();
@@ -11,12 +12,12 @@ const QueriesCard = ({ data }) => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/recommendation/${user?.email}`)
+            fetch(`${API_URL}/recommendation/${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
                     const count = data.filter(re => re.queryTitle === queryTitle);
                     setReCount(count);
-                    setRecommendation(data);
+                    // setRecommendation(data);
                 });
         }
     }, [user?.email, queryTitle]);
@@ -52,7 +53,7 @@ const QueriesCard = ({ data }) => {
                             </div>
                         </div>
                         <Link to={`/queriesDetails/${_id}`}>
-                            <button className="btn btn-warning text-white btn-sm text-lg font-Jost">Recomandation</button>
+                            <button className="btn btn-warning rounded-none btn-sm text-lg font-Jost">Recomandation</button>
                         </Link>
                     </div>
                 </div>

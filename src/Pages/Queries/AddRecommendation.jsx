@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import UseAuth from "../../Hook/UseAuth";
 import Swal from "sweetalert2";
+import { API_URL } from "../../constant";
+import { Helmet } from "react-helmet";
 
 const AddRecommendation = ({ card }) => {
     const { user } = UseAuth();
@@ -35,7 +37,7 @@ const AddRecommendation = ({ card }) => {
         }
         console.table(recommendation)
 
-        fetch(`http://localhost:5000/recommendation`, {
+        fetch(`${API_URL}/recommendation`, {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(recommendation)
@@ -46,7 +48,7 @@ const AddRecommendation = ({ card }) => {
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'success',
-                        text: 'Add New Touris Spot',
+                        text: 'Add New Recommendations',
                         icon: 'success',
                         confirmButtonText: 'Ok'
                     })
@@ -56,60 +58,59 @@ const AddRecommendation = ({ card }) => {
     }
 
     return (
-        <div className="flex justify-between items-center gap-10">
-            <div className="flex-1"></div>
-            <div className="flex-1">
+        <div className="">
+            <Helmet>
+                <title>Add Recommendation - Gadgets Stock React Template</title>
+            </Helmet>
+            <div className="max-w-screen-md mx-auto border rounded-lg p-12">
+                <h1 className="text-2xl font-medium pb-5">Add Recommendation</h1>
 
-                <div className="max-w-screen-md mx-auto border rounded-lg p-12">
-                    <h1 className="text-2xl font-medium pb-5">Add Recommendation</h1>
+                <form onSubmit={handleAddRecommendation}>
+                    <div className="space-y-2 mb-4">
+                        <label className="font-medium block">Recommendation Title</label>
+                        <input
+                            type="text" name="recommendationTitle"
+                            placeholder="Recommendation Title"
+                            className="input input-bordered rounded-none w-full"
+                            required
+                        />
+                    </div>
+                    <div className="flex-1 space-y-2 mb-4">
+                        <label className="font-medium block">Recommended product Name</label>
 
-                    <form onSubmit={handleAddRecommendation}>
-                        <div className="space-y-2 mb-4">
-                            <label className="font-medium block">Recommendation Title</label>
-                            <input
-                                type="text" name="recommendationTitle"
-                                placeholder="Recommendation Title"
-                                className="input input-bordered rounded-none w-full"
-                                required
-                            />
-                        </div>
-                        <div className="flex-1 space-y-2 mb-4">
-                            <label className="font-medium block">Recommended product Name</label>
-
-                            <input
-                                type="text" name="recommendedProductName"
-                                placeholder="Recommended product Name"
-                                className="input input-bordered rounded-none w-full"
-                                required
-                            />
-                        </div>
-                        <div className="flex-1 space-y-2 mb-4">
-                            <label className="font-medium block">Recommended Product Image</label>
-                            <input
-                                type="text" name="recommendedImage"
-                                placeholder="Recommended Product Image"
-                                className="input input-bordered rounded-none w-full"
-                                required
-                            />
-                        </div>
-                        <div className=" space-y-2 mb-4">
-                            <label className="font-medium block">Recommendation reason</label>
-                            <textarea
-                                name='recommendationReason'
-                                placeholder="Recommendation Reason"
-                                className="textarea textarea-bordered rounded-none w-full"
-                                required></textarea>
-                        </div>
+                        <input
+                            type="text" name="recommendedProductName"
+                            placeholder="Recommended product Name"
+                            className="input input-bordered rounded-none w-full"
+                            required
+                        />
+                    </div>
+                    <div className="flex-1 space-y-2 mb-4">
+                        <label className="font-medium block">Recommended Product Image</label>
+                        <input
+                            type="text" name="recommendedImage"
+                            placeholder="Recommended Product Image"
+                            className="input input-bordered rounded-none w-full"
+                            required
+                        />
+                    </div>
+                    <div className=" space-y-2 mb-4">
+                        <label className="font-medium block">Recommendation reason</label>
+                        <textarea
+                            name='recommendationReason'
+                            placeholder="Recommendation Reason"
+                            className="textarea textarea-bordered rounded-none w-full"
+                            required></textarea>
+                    </div>
 
 
-                        <button className="btn btn-outline  border hover:bg-[#d01818] px-10 text-xl">
-                            Add Recommendation
-                        </button>
+                    <button className="btn btn-outline  border hover:bg-[#d01818] px-10 text-xl">
+                        Add Recommendation
+                    </button>
 
-                    </form>
-                </div >
+                </form>
             </div >
-        </div>
+        </div >
     );
 };
 

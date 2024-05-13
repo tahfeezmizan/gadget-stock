@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import QueriesCard from './QueriesCard';
 import UseAuth from '../../Hook/UseAuth';
+import { API_URL } from '../../constant';
 
 const Queries = () => {
     const { user } = UseAuth();
@@ -8,7 +9,7 @@ const Queries = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/queries`)
+        fetch(`${API_URL}/queries`)
             .then(res => res.json())
             .then(data => {
                 setCard(data)
@@ -19,8 +20,11 @@ const Queries = () => {
     return (
         <div className="hero bg-base-200">
             <div className="w-full lg:w-5/6 xl:w-8/12 mx-auto px-2 lg:px-0 py-10 md:py-12 lg:py-20">
-                <div className="my-10">
+                <div className="my-10 flex flex-col md:flex-row justify-between gap-6">
                     <h2 className="text-3xl md:text-5xl font-bold pl-2">TOP PRODUCTS</h2>
+                    <div className="">
+                        <button className='btn btn-warning rounded-none'>Grid</button>
+                    </div>
                 </div>
 
                 {isLoading ?

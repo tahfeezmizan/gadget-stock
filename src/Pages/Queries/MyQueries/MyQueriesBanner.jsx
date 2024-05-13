@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import sliderBg from '../../../assets/slider-bg.jpg';
+import { Helmet } from 'react-helmet';
 
 const MyQueriesBanner = () => {
     return (
@@ -9,9 +10,9 @@ const MyQueriesBanner = () => {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
         }}>
-            {/* <Helmet>
-                <title>My Queries  - Gadgets Stock Template</title>
-            </Helmet> */}
+            <Helmet>
+                <title>My Queries - Gadgets Stock React Template</title>
+            </Helmet>
             <div className="w-full lg:w-5/6 xl:w-8/12 mx-auto px-2 lg:px-0 py-10 md:py-12 lg:py-20">
                 <h1 className="font-medium font-Jost pb-4 text-white" >My Queries</h1>
                 <Link to='/addqueries'>

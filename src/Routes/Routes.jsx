@@ -8,15 +8,17 @@ import MyQueriesBanner from "../Pages/Queries/MyQueries/MyQueriesBanner";
 import UpdateQueries from "../Pages/Queries/MyQueries/UpdateQueries";
 import Queries from "../Pages/Queries/Queries";
 import QuriesDetails from "../Pages/Queries/QuriesDetails";
-import Register from "../Pages/Register/Register";
-import PrivateRoute from "./PrivateRoute";
 import MyRecommendation from "../Pages/Queries/Recommendation/MyRecommendation";
 import RecommendationsForMe from "../Pages/Queries/Recommendation/RecommendationsForMe";
+import Register from "../Pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <RootLayout />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
@@ -36,34 +38,49 @@ const router = createBrowserRouter([
             },
             {
                 path: '/myqueries',
-                element:
-                    <> <PrivateRoute>
+                element: <>
+                    <PrivateRoute>
                         <MyQueriesBanner /><MyQueries />
-                    </PrivateRoute></>,
+                    </PrivateRoute>
+                </>,
             },
             {
                 path: '/queriesDetails/:id',
-                element: <PrivateRoute>
-                    <QuriesDetails />
-                </PrivateRoute>,
+                element: <>
+                    <PrivateRoute>
+                        <QuriesDetails />
+                    </PrivateRoute></>,
             },
             {
                 path: '/addqueries',
-                element: <PrivateRoute>
-                    <AddQueries />
-                </PrivateRoute>
+                element: <>
+                    <PrivateRoute>
+                        <AddQueries />
+                    </PrivateRoute></>,
             },
             {
                 path: '/updatequeries/:id',
-                element: <UpdateQueries />
+                element: <>
+                    <PrivateRoute>
+                        <UpdateQueries />
+                    </PrivateRoute>
+                </>
             },
             {
                 path: '/myrecommendation',
-                element: <MyRecommendation />
+                element: <>
+                    <PrivateRoute>
+                        <MyRecommendation />
+                    </PrivateRoute>
+                </>
             },
             {
                 path: '/recommendationsforme',
-                element: <RecommendationsForMe />
+                element: <>
+                    <PrivateRoute>
+                        <RecommendationsForMe />
+                    </PrivateRoute>
+                </>
             },
         ]
     },
