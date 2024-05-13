@@ -8,7 +8,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const { logInUser, googleLogin } = UseAuth();
+    const { logInUser, googleLogin, user } = UseAuth();
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -24,11 +24,11 @@ const Login = () => {
 
         logInUser(email, password)
             .then(result => {
-                const user = { email };
                 const loggedUser = result.loggedUser;
                 toast.success('Congrs! Login Sucessfull');
                 navigate(location?.state ? location.state : '/');
-
+                
+                const user = { email };
                 axios.post(`${API_URL}/jwt`, user)
                     .then(res => {
                         // console.log(res.data);
@@ -104,17 +104,17 @@ const Login = () => {
                                         .then(result => {
                                             const user = { email };
                                             toast.success('Congrs! Google Login Sucessfull');
-                                            navigate(location?.state ? location.state : '/');
-
+                                            
                                             axios.post(`${API_URL}/jwt`, user)
-                                                .then(res => {
-                                                    // console.log(res.data);
+                                            .then(res => {
+                                                    navigate(location?.state ? location.state : '/');
+                                                    console.log(res.data);
                                                 })
                                         })
                                         .catch((error) => {
                                             const errorText = error.message;
-                                            console.log(errorText)
-                                            const errorMessage = errorText.slice(22, 40);
+                                            console.log(errorText);
+                                            const errorMessage = errorText.slice(0, 200);
                                             toast.error(errorMessage)
                                         })
                                     }

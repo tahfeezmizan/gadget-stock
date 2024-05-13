@@ -116,7 +116,7 @@ const UpdateQueries = () => {
                                 required></textarea>
                         </div>
                         <div className="form-control my-6">
-                            <button className="btn btn-outline  border hover:bg-[#d01818] px-10 text-xl">Update Query</button>
+                            <button className="btn btn-outline btn-warning rounded-none px-10 text-xl text-white">Update Query</button>
                         </div>
                     </form>
                 </div >

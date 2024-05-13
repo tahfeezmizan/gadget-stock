@@ -23,12 +23,12 @@ const MyQueriesCard = ({ data, handleDelete }) => {
                     <p className="">Product Name: <span className="font-semibold"> <br /> {productName}</span></p>
                 </div>
                 <div className="flex items-center justify-between gap-3 pt-4 pb-2">
-                    <button onClick={() => handleDelete(_id)} className='btn btn-outline btn-error btn-sm hover:text-white'>Delete</button>
+                    <button onClick={() => handleDelete(_id)} className='btn btn-outline rounded-none btn-error btn-sm hover:text-white'>Delete</button>
                     <Link to={`/updatequeries/${_id}`}>
-                        <button className='btn btn-sm btn-outline btn-info'>Update</button>
+                        <button className='btn btn-outline rounded-none btn-sm btn-info'>Update</button>
                     </Link>
                     <Link to={`/queriesDetails/${_id}`}>
-                        <button className='btn-sm btn btn-outline btn-primary'>View Details</button>
+                        <button className='btn btn-outline rounded-none btn-sm btn-primary'>View Details</button>
                     </Link>
                 </div>
             </div>

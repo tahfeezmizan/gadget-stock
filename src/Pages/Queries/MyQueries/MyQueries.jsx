@@ -11,13 +11,15 @@ const MyQueries = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`${API_URL}/queriesuser?email=${user?.email}`)
+        fetch(`${API_URL}/queriesuser?email=${user?.email}`, {credentials: 'include'})
             .then(res => res.json())
             .then(data => {
                 setCard(data);
+                console.log(data);
                 setIsLoading(false);
             })
     }, []);
+    console.log(card);
 
     const handleDelete = id => {
         Swal.fire({

@@ -21,14 +21,6 @@ const Queries = () => {
         setGridLayout(layout);
     };
 
-    const handleSearch = () => {
-        console.log('Search query:', searchQuery);
-    };
-
-    const handleInputChange = (event) => {
-        setSearchQuery(event.target.value);
-    };
-
     // Filtering queries based on search query
     const filteredQueries = card.filter(query => query.productName.toLowerCase().includes(searchQuery.toLowerCase()));
 
@@ -40,17 +32,7 @@ const Queries = () => {
                     <div className="flex gap-5 items-center">
                         <button className='btn btn-warning rounded-none' onClick={() => handleGridLayoutChange('grid-cols-2')}>Grid 2</button>
                         <button className='btn btn-warning rounded-none' onClick={() => handleGridLayoutChange('grid-cols-3')}>Grid 3</button>
-
-                        <div className="relative">
-                            <input
-                                type="text"
-                                className="input input-bordered border-none outline-none"
-                                placeholder="Search by product name..."
-                                value={searchQuery}
-                                onChange={handleInputChange}
-                            />
-                            <button className="btn btn-primary" onClick={handleSearch}>Go</button>
-                        </div>
+                        
                     </div>
                 </div>
 

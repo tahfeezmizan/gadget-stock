@@ -115,7 +115,7 @@ const AddQueries = () => {
                         </div>
 
                         <div className="form-control my-6">
-                            <button className="btn btn-outline  border hover:bg-[#d01818] px-10 text-xl">Add New Query</button>
+                            <button className="btn btn-outline btn-warning rounded-none px-10 text-xl text-white">Add New Query</button>
                         </div>
                     </form>
                 </div >

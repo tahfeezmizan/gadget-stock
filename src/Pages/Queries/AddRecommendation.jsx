@@ -104,7 +104,7 @@ const AddRecommendation = ({ card }) => {
                     </div>
 
 
-                    <button className="btn btn-outline  border hover:bg-[#d01818] px-10 text-xl">
+                    <button className="btn btn-outline btn-warning rounded-none px-10 text-xl text-white">
                         Add Recommendation
                     </button>
 
