@@ -10,4 +10,16 @@ li a.active,
 .login a.active {
     font-size: 16px;
     font-weight: 700;
+    color: #fff !important;
+    border-radius: 0 !important;
+    background-color: #ff8717 !important;
+}
+
+li a:hover,
+.login a:hover {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff !important;
+    border-radius: 0 !important;
+    background-color: #ff8717 !important;
 }

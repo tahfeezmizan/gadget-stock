@@ -25,7 +25,7 @@ const QueriesCard = ({ data }) => {
         <Link to={`/queriesDetails/${_id}`}>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <figure className="bg-gray-100">
-                    <p title="Recomandation Count" className="absolute top-5 left-5 p-1 px-3 border-2 z-10 border-yellow-500">{reCount.length > 0 ? reCount.length : '0'}</p>
+                    <p title="Recomandation Count" className="absolute top-5 left-5 p-1 px-3 border-2 z-10 border-[#ff8717]">{reCount.length > 0 ? reCount.length : '0'}</p>
                     <div className="h-64 overflow-hidden border-red-600">
                         <img className="w-full p-3 h-full object-contain transition-transform transform hover:scale-105 duration-500 ease-in-out" src={imageUrl} alt="" />
                     </div>
@@ -52,7 +52,7 @@ const QueriesCard = ({ data }) => {
                             </div>
                         </div>
                         <Link to={`/queriesDetails/${_id}`}>
-                            <button className="btn btn-warning text-white rounded-none btn-sm text-lg font-Jost">Recomandation</button>
+                            <button className="btn bg-[#ff8717] hover:bg-[#eb7d16] text-white rounded-none btn-sm text-lg font-Jost">Recomandation</button>
                         </Link>
                     </div>
                 </div>

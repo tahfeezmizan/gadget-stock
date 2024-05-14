@@ -57,8 +57,8 @@ const AddQueries = () => {
     return (
         <div className="py-10">
             <div className="w-full md:w-8/12 mx-auto">
-                <div className="max-w-screen-md mx-auto border rounded-lg p-12">
-                    <h1 className="text-2xl md:text-5xl text-center font-bold pb-5">Add New Quries</h1>
+                <div className="max-w-screen-md mx-auto rounded-lg p-12">
+                    <h1 className="text-2xl md:text-3xl font-bold pb-6">Add New Quries</h1>
 
                     <form onSubmit={handleAddQuries}>
                         <div className="flex flex-col md:flex-row gap-0 md:gap-8">
@@ -67,7 +67,7 @@ const AddQueries = () => {
                                 <input
                                     type="text" name="productName"
                                     placeholder="Product Name"
-                                    className="input input-bordered w-full max-w-xs"
+                                    className="input input-bordered rounded-none w-full max-w-xs"
                                     required
                                 />
                             </div>
@@ -77,7 +77,7 @@ const AddQueries = () => {
                                 <input
                                     type="text" name="brandName"
                                     placeholder="Brand Name"
-                                    className="input input-bordered w-full max-w-xs"
+                                    className="input input-bordered rounded-none w-full max-w-xs"
                                     required
                                 />
                             </div>
@@ -89,7 +89,7 @@ const AddQueries = () => {
                                 <input
                                     type="text" name="queryTitle"
                                     placeholder="Query Title"
-                                    className="input input-bordered w-full max-w-xs"
+                                    className="input input-bordered rounded-none w-full max-w-xs"
                                     required
                                 />
                             </div>
@@ -99,7 +99,7 @@ const AddQueries = () => {
                                 <input
                                     type="text" name="imageUrl"
                                     placeholder="Product ImageUrl Url"
-                                    className="input input-bordered w-full max-w-xs"
+                                    className="input input-bordered rounded-none w-full max-w-xs"
                                     required
                                 />
                             </div>
@@ -110,7 +110,7 @@ const AddQueries = () => {
                             <textarea
                                 name='boycottingReason'
                                 placeholder="Boycotting Reason Details                                "
-                                className="textarea textarea-bordered  w-full"
+                                className="textarea textarea-bordered rounded-none w-full"
                                 required></textarea>
                         </div>
 

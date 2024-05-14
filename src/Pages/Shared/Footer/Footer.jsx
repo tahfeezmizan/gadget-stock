@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import sitelogo from '../../../assets/site-logo.png'
+import { FaFacebook, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
     return (
@@ -9,8 +11,7 @@ const Footer = () => {
                     {/* Services Links */}
                     <div className="col-span-2 xl:col-span-3">
                         <NavLink className="text-xl uppercase Sitelogo pb-10">
-                            {/* <img src={sitelogo} className="w-28" alt="" /> */}
-                            <h2 className="text-3xl font-Jost">Gadgets Stock</h2>
+                            <img src={sitelogo} className="w-48" alt="" />
                         </NavLink>
 
                         <p className="py-6">Sed ut perspiciatis undmnis is iste natus error sit amet voluptatem totam rem aperiam.</p>
@@ -56,9 +57,14 @@ const Footer = () => {
                     {/* Follow Us On */}
                     <div className="col-span-1 xl:col-span-2 text-center xl:text-start">
                         <nav className="flex flex-col">
-                            <header className="text-black text-lg font-bold mb-4">Follow Us On</header>
+                            <header className="text-black text-lg font-bold mb-6">Follow Us On</header>
 
-                            © 2025 TailGrids
+                            <div className="flex items-center gap-8 text-xl text-white mb-5">
+                                <p className="bg-[#ff8717] rounded-full p-2"><FaFacebook /></p>
+                                <p className="bg-[#ff8717] rounded-full p-2"><FaLinkedin /></p>
+                                <p className="bg-[#ff8717] rounded-full p-2"><FaTwitter /></p>
+                            </div>
+                            <p className="font-Roboto">Copyright © 2020 Gadgest</p>
                         </nav>
                     </div>
 

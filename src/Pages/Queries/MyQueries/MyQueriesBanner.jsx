@@ -16,7 +16,7 @@ const MyQueriesBanner = () => {
             <div className="w-full lg:w-5/6 xl:w-8/12 mx-auto px-2 lg:px-0 py-10 md:py-12 lg:py-20">
                 <h1 className="font-medium font-Jost pb-4 text-white" >My Queries</h1>
                 <Link to='/addqueries'>
-                    <button className='btn btn-outline rounded-none btn-warning px-10 text-xl text-white'>Add New Queries</button>
+                    <button className='btn btn-outline border-[#ff8717] hover:bg-[#eb7d16] rounded-none px-10 text-xl text-white'>Add New Queries</button>
                 </Link>
             </div>
         </div>

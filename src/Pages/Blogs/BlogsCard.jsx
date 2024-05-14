@@ -18,7 +18,7 @@ const BlogsCard = ({ data }) => {
                         <h3 class="text-2xl font-bold mb-6 font-Jost">{blogtitle}</h3>
                         <p class="leading-7 mb-6 font-Roboto text-justify">{description.substring(0, 134)}...</p>
                     </div>
-                    <button class="btn btn-warning btn-outline text-white rounded-none text-lg font-Jost">Learn More</button>
+                    <button class="btn hover:bg-[#eb7d16] hover:border-[#ff8717] border-[#ff8717] btn-outline rounded-none text-lg font-Jost">Learn More</button>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ import UseAuth from '../../../Hook/UseAuth';
 import { Link, NavLink } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import profileAvater from '../../../assets/profileAvater.jpg';
+import siteLogo from '../../../assets/site-logo.png'
 
 const Navbar = () => {
     const { user, logOut } = UseAuth();
@@ -40,7 +41,7 @@ const Navbar = () => {
 
     return (
         <div className="navbar bg-base-100 navMenu py-2 sticky top-0 z-50">
-            <div className="w-full lg:w-5/6 xl:w-8/12 mx-auto navbar ">
+            <div className="w-full lg:w-7/6 xl:w-9/12 mx-auto navbar ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -50,9 +51,8 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <NavLink className="btn btn-ghost text-xl uppercase Sitelogo">
-                        {/* <img src={sitelogo} className="w-28" alt="" /> */}
-                        <h2 className="text-3xl">gadgest</h2>
+                    <NavLink className="text-xl uppercase Sitelogo">
+                        <img src={siteLogo} className="w-40" alt="" />
                     </NavLink>
                 </div>
 
@@ -88,12 +88,12 @@ const Navbar = () => {
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                                 <li><p className="text-lg font-bold capitalize">{user?.displayName || 'Name Not Found'}</p></li>
                                 <li><Link to='/profile'>Profile</Link></li>
-                                <li><button onClick={() => {
+                                <li><Link onClick={() => {
                                     logOut()
                                     if (logOut) {
                                         toast.success('User has log out!');
                                     }
-                                }}><a>Logout</a></button></li>
+                                }}><a>Logout</a></Link></li>
                             </ul>
                         </div>
                         :

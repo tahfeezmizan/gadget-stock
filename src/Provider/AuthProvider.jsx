@@ -59,7 +59,7 @@ const githubLogin = () => {
             if (currentUser) {
                 setUser(currentUser);
                 setIsLoading(false);
-                console.log(currentUser);
+                // console.log(currentUser);
 
                 if (currentUser) {
                     axios.post(`${API_URL}/jwt `, loggedUser, { withCredentials: true })
@@ -71,7 +71,7 @@ const githubLogin = () => {
             else {
                 axios.post(`${API_URL}/logout `, loggedUser, { withCredentials: true })
                     .then(res => {
-                        console.log('LogOut token', res.data);
+                        // console.log('LogOut token', res.data);
                     })
                 setIsLoading(false)
             }

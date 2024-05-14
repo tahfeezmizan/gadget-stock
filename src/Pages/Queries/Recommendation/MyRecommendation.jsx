@@ -56,7 +56,7 @@ const MyRecommendation = () => {
             <Helmet>
                 <title>My Recommendation - Gadgets Stock React Template</title>
             </Helmet>
-            <h1 className="text-2xl pb-5 font-bold">My Recommendation <span className='bg-yellow-200  text-base px-4 rounded-3xl'>{recommendation.length}</span> </h1>
+            <h1 className="text-2xl pb-5 font-bold">My Recommendation <span className='bg-[#ff8717] text-white  text-base px-4 rounded-3xl'>{recommendation.length}</span> </h1>
 
             <div className="overflow-x-auto">
                 {recommendation?.length > 0 ? (

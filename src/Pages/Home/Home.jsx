@@ -19,8 +19,6 @@ const Home = () => {
                 setIsLoading(false)
             })
     }, []);
-    // console.log(card);
-
 
     return (
         <div>
