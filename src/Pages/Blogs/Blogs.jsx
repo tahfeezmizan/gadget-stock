@@ -1,7 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { API_URL } from "../../constant";
+import BlogsCard from "./BlogsCard";
 
 const Blogs = () => {
     const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        fetch(`${API_URL}/blog-post`)
+            .then(res => res.json())
+            .then(data => {
+                setData(data);
+                setIsLoading(false);
+            });
+    }, []);
 
     return (
         <div className="hero bg-base-200">
@@ -12,8 +24,13 @@ const Blogs = () => {
                     <p className="font-Roboto text-lg">There are many variations of passages of Lorem Ipsum available</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-10 gap-6 sm:mb-4 md:mb-4">
-
+                <div class="grid grid-cols-1 md:grid-cols-2 mt-10 gap-10 sm:mb-4 md:mb-4">
+                    {
+                        data?.map(data => <BlogsCard
+                            data={data}
+                            key={data._id}
+                        ></BlogsCard>)
+                    }
                 </div>
             </div>
         </div>

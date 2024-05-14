@@ -7,6 +7,7 @@ const Queries = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [gridLayout, setGridLayout] = useState('grid-cols-3');
     const [searchQuery, setSearchQuery] = useState('');
+    const [showResults, setShowResults] = useState(false);
 
     useEffect(() => {
         fetch(`${API_URL}/queries`)
@@ -21,6 +22,10 @@ const Queries = () => {
         setGridLayout(layout);
     };
 
+    const handleSearch = () => {
+        setShowResults(true);
+    };
+
     // Filtering queries based on search query
     const filteredQueries = card.filter(query => query.productName.toLowerCase().includes(searchQuery.toLowerCase()));
 
@@ -32,7 +37,15 @@ const Queries = () => {
                     <div className="flex gap-5 items-center">
                         <button className='btn btn-warning rounded-none' onClick={() => handleGridLayoutChange('grid-cols-2')}>Grid 2</button>
                         <button className='btn btn-warning rounded-none' onClick={() => handleGridLayoutChange('grid-cols-3')}>Grid 3</button>
-                        
+
+                        <input
+                            type="text"
+                            placeholder="Search"
+                            className="input input-bordered"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                        <button className="btn btn-primary" onClick={handleSearch}>Search</button>
                     </div>
                 </div>
 
@@ -41,12 +54,20 @@ const Queries = () => {
                         <span className="loading loading-spinner text-error text-5xl"></span>
                     </div> :
                     <div className={`grid ${gridLayout} gap-10`}>
-                        {filteredQueries.map(data => (
-                            <QueriesCard
-                                data={data}
-                                key={data._id}
-                            />
-                        ))}
+                        {showResults ?
+                            filteredQueries.map(data => (
+                                <QueriesCard
+                                    data={data}
+                                    key={data._id}
+                                />
+                            )) :
+                            card.map(data => (
+                                <QueriesCard
+                                    data={data}
+                                    key={data._id}
+                                />
+                            ))
+                        }
                     </div>
                 }
             </div>
