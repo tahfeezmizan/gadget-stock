@@ -97,8 +97,8 @@ const Navbar = () => {
                             </ul>
                         </div>
                         :
-                        <div className="login px-1 gap-5 felx font-Roboto">
-                            <NavLink className="" to="/login">Login</NavLink>
+                        <div className="px-1 gap-5 felx font-Roboto">
+                            <NavLink className="login px-3 py-2" to="/login">Login</NavLink>
                         </div>
                     }
                 </div>

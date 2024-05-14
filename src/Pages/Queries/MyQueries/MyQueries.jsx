@@ -68,9 +68,9 @@ const MyQueries = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
                             {
                                 card?.map(data => <MyQueriesCard
-                                    data={data}
+                                    key={data._id} data={data}
                                     handleDelete={handleDelete}
-                                    key={card._id}></MyQueriesCard>)
+                                ></MyQueriesCard>)
                             }
                         </div>)
                         : (

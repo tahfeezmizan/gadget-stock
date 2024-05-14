@@ -12,7 +12,7 @@ const ErrorPage = () => {
                 <h1 className="text-[340px] font-Jost font-semibold text-gray-300">404 </h1>
                 <p className="text-5xl font-medium -mt-16 pb-6 font-Roboto">Oops... It looks like you ‘re lost !</p>
                 <p className="text-lg font-Roboto pb-5 text-gray-400">Oops! The page you are looking for does not exist. It might have been moved or deleted.</p>
-                <Link to="/" className="btn btn-warning text-lg font-Jost uppercase px-8 rounded-none">Back To Home page</Link>
+                <Link to="/" className="btn bg-[#ff8717] text-white hover:bg-[#eb7d16] text-lg font-Jost uppercase px-8 rounded-none">Back To Home page</Link>
             </div>
         </div>
     );

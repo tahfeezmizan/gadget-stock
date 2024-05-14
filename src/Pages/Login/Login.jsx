@@ -55,7 +55,7 @@ const Login = () => {
     };
 
 
-    if (user || isLoading) return
+    // if (user || isLoading) return
 
     return (
         <div className="w-full md:w-8/12 mx-auto rounded-3xl py-20">
@@ -105,7 +105,7 @@ const Login = () => {
                                 {errors.password && <span className="text-xs text-red-500">Password is required</span>}
                             </div>
                             <div className="form-control pt-5">
-                                <button className="btn w-full bg-[#d01818] hover:bg-[#0d1637] text-white text-xl font-bold">Login</button>
+                                <button className="btn bg-[#ff8717] hover:bg-[#eb7d16] border-none rounded-none text-white text-xl font-bold">Login</button>
                             </div>
                         </form>
                         {/* third party login method */}
