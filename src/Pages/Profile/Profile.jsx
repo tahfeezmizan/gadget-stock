@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import UseAuth from '../../Hook/UseAuth';
 import { Helmet } from 'react-helmet';
 import { toast } from 'react-toastify';
+import UseAuth from '../../Hook/UseAuth';
 
 const Profile = () => {
     const { user, userProfileUpdate } = UseAuth();
@@ -28,6 +28,7 @@ const Profile = () => {
         userProfileUpdate(displayName, photoURL)
             .then((result) => {
                 toast.success('Profile updated successfully!');
+                console.log(result);
             })
             .catch((error) => {
                 console.error('Error updating profile:', error);
@@ -72,11 +73,11 @@ const Profile = () => {
                             className="w-full border rounded-md p-2 mb-4"
                         />
 
-                        <div className="flex justify-between items-center">
-                            <button type="submit" className="text-white px-4 py-2 font-semibold rounded-md bg-[#d01818] hover:bg-[#0d1637]">
+                        <div className="flex justify-between items-center ">
+                            <button type="submit" className="btn btn-warning rounded-none px-10 text-xl">
                                 Update Profile
                             </button>
-                            <button className="text-white px-4 py-2 font-semibold rounded-md bg-[#d01818] hover:bg-[#0d1637]">
+                            <button className="btn btn-warning rounded-none px-10 text-xl">
                                 Connect
                             </button>
                         </div>

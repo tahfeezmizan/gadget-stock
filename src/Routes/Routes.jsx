@@ -14,6 +14,7 @@ import Register from "../Pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import QueriesBanner from "../Pages/Queries/QueriesBanner";
+import Profile from "../Pages/Profile/Profile";
 
 const router = createBrowserRouter([
     {
@@ -82,6 +83,14 @@ const router = createBrowserRouter([
                 element: <>
                     <PrivateRoute>
                         <RecommendationsForMe />
+                    </PrivateRoute>
+                </>
+            },
+            {
+                path: '/profile',
+                element: <>
+                    <PrivateRoute>
+                        <Profile />
                     </PrivateRoute>
                 </>
             },

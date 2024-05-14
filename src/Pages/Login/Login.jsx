@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
     const { logInUser, googleLogin, user, isLoading } = UseAuth();
@@ -53,11 +54,14 @@ const Login = () => {
         setShowPassword(!showPassword);
     };
 
-    
+
     if (user || isLoading) return
 
     return (
         <div className="w-full md:w-8/12 mx-auto rounded-3xl py-20">
+            <Helmet>
+                <title>Login - Gadgets Stock React Template</title>
+            </Helmet>
             <div className="w-4/6 mx-auto rounded-xl overflow-hidden flex flex-col md:flex-row justify-between items-center shadow-2xl bg-base-100">
                 <div className="flex-1">
                     <div className="card shrink-0 w-full max-w-lg p-10 ">

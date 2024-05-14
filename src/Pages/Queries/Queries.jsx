@@ -9,7 +9,7 @@ const Queries = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [searchText, setSearchText] = useState('');
     const [gridLayout, setGridLayout] = useState('grid-cols-3');
-    const [searchProduct, setSearchProduct] = useState('');
+    // const [searchProduct, setSearchProduct] = useState('');
 
     useEffect(() => {
         fetch(`${API_URL}/queries`)
@@ -24,25 +24,34 @@ const Queries = () => {
         setGridLayout(layout);
     };
 
-    const handleSearch = () => {
-        console.log('Search term:', searchText);
-    };
-
     const handleChange = (event) => {
         setSearchText(event.target.value);
     };
 
-    useEffect(() => {
-        AxiosSecure.get(`/queries/${searchText}`)
-            .then(res => {
-                const matchProduct = res.data.filter(product => product.productName === searchText);
-                setSearchProduct(matchProduct);
+    const handleSearch = () => {
+        console.log('Search term:', searchText);
 
-                console.log('match product', matchProduct);
-            });
-    }, [])
-    // console.log(searchProduct);
+        if (searchText.length !== 0) {
+            fetch(`${API_URL}/queries/${searchText}`)
+            .then(res => res.json())
+                .then(data => {
+                    // const matchProduct = data.filter(product => product.productName === searchText);
+                    setCard(data);
+                    console.log('match product', data);
+                });
+        }
+        else {
+            fetch(`${API_URL}/queries`)
+                .then(res => res.json())
+                .then(data => {
+                    setCard(data);
+                    setIsLoading(false);
+                });
+        }
+    };
 
+
+    console.log(card);
     return (
         <div className="hero bg-base-200">
             <div className="w-full lg:w-5/6 xl:w-8/12 mx-auto px-2 lg:px-0 py-10 md:py-12 lg:py-20">

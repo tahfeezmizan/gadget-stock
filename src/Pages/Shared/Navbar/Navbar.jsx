@@ -87,7 +87,7 @@ const Navbar = () => {
                             </div>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                                 <li><p className="text-lg font-bold capitalize">{user?.displayName || 'Name Not Found'}</p></li>
-                                <li><a>Profile</a></li>
+                                <li><Link to='/profile'>Profile</Link></li>
                                 <li><button onClick={() => {
                                     logOut()
                                     if (logOut) {

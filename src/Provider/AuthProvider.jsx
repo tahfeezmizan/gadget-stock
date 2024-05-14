@@ -1,15 +1,14 @@
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/Firebase.config";
-import axios from "axios";
 import { API_URL } from "../constant";
+import axios from "axios";
 
 export const AuthContext = createContext();
 
 // social login 
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
-
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -32,7 +31,7 @@ const AuthProvider = ({ children }) => {
     }
 
     // github 
-    const githubLogin = () => {
+const githubLogin = () => {
         setIsLoading(true)
         return signInWithPopup(auth, githubProvider);
     }
@@ -60,7 +59,7 @@ const AuthProvider = ({ children }) => {
             if (currentUser) {
                 setUser(currentUser);
                 setIsLoading(false);
-                // console.log(currentUser);
+                console.log(currentUser);
 
                 if (currentUser) {
                     axios.post(`${API_URL}/jwt `, loggedUser, { withCredentials: true })
