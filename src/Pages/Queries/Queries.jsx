@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { API_URL } from '../../constant';
 import QueriesCard from './QueriesCard';
+import useAxiosSecure from '../../Hook/useAxiosSecure';
 
 const Queries = () => {
+    const AxiosSecure = useAxiosSecure();
     const [card, setCard] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [searchText, setSearchText] = useState('');
     const [gridLayout, setGridLayout] = useState('grid-cols-3');
-    const [searchQuery, setSearchQuery] = useState('');
-    const [showResults, setShowResults] = useState(false);
+    const [searchProduct, setSearchProduct] = useState('');
 
     useEffect(() => {
         fetch(`${API_URL}/queries`)
@@ -23,11 +25,23 @@ const Queries = () => {
     };
 
     const handleSearch = () => {
-        setShowResults(true);
+        console.log('Search term:', searchText);
     };
 
-    // Filtering queries based on search query
-    const filteredQueries = card.filter(query => query.productName.toLowerCase().includes(searchQuery.toLowerCase()));
+    const handleChange = (event) => {
+        setSearchText(event.target.value);
+    };
+
+    useEffect(() => {
+        AxiosSecure.get(`/queries/${searchText}`)
+            .then(res => {
+                const matchProduct = res.data.filter(product => product.productName === searchText);
+                setSearchProduct(matchProduct);
+
+                console.log('match product', matchProduct);
+            });
+    }, [])
+    // console.log(searchProduct);
 
     return (
         <div className="hero bg-base-200">
@@ -38,14 +52,18 @@ const Queries = () => {
                         <button className='btn btn-warning rounded-none' onClick={() => handleGridLayoutChange('grid-cols-2')}>Grid 2</button>
                         <button className='btn btn-warning rounded-none' onClick={() => handleGridLayoutChange('grid-cols-3')}>Grid 3</button>
 
-                        <input
-                            type="text"
-                            placeholder="Search"
-                            className="input input-bordered"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                        />
-                        <button className="btn btn-primary" onClick={handleSearch}>Search</button>
+                        <div>
+                            <input
+                                type="text"
+                                name='search'
+                                placeholder="Search"
+                                className="input input-bordered"
+                                value={searchText}
+                                onChange={handleChange}
+                            />
+                            <button className='btn btn-warning rounded-none' onClick={handleSearch}>Search</button>
+                        </div>
+
                     </div>
                 </div>
 
@@ -54,20 +72,13 @@ const Queries = () => {
                         <span className="loading loading-spinner text-error text-5xl"></span>
                     </div> :
                     <div className={`grid ${gridLayout} gap-10`}>
-                        {showResults ?
-                            filteredQueries.map(data => (
+                        {
+                            card?.map(data => (
                                 <QueriesCard
                                     data={data}
                                     key={data._id}
                                 />
-                            )) :
-                            card.map(data => (
-                                <QueriesCard
-                                    data={data}
-                                    key={data._id}
-                                />
-                            ))
-                        }
+                            ))}
                     </div>
                 }
             </div>

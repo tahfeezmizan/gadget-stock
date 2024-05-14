@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import UseAuth from "../../Hook/UseAuth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
-    const { createUser, } = UseAuth();
+    const { createUser, user, userProfileUpdate, isLoading, logOut } = UseAuth();
     const [showPassword, setShowPassword] = useState(false);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user) {
+            navigate('/');
+        }
+    }, [navigate, user]);
 
     const {
         register,
@@ -23,13 +30,16 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const registerData = result?.user;
-                toast.success('User Register Sucessfully')
-                // console.log(registerData);
+                userProfileUpdate(name, photoURL)
+                    .then(() => {
+                        logOut()
+                        toast.success('User Register Sucessfully')
+                        navigate('/login')
+                    })
             })
             .catch(error => {
                 const errorMessage = error.message;
                 toast.error(`${errorMessage}`)
-                console.log(errorMessage);
             });
     };
 
@@ -37,9 +47,13 @@ const Register = () => {
         setShowPassword(!showPassword);
     };
 
+    if (user || isLoading) return
 
     return (
         <div className="w-full md:w-8/12 mx-auto rounded-3xl py-20">
+            <Helmet>
+                <title>Register - Gadgets Stock React Template</title>
+            </Helmet>
             <div className="w-5/6 mx-auto rounded-xl overflow-hidden flex flex-col md:flex-row justify-between items-center shadow-2xl bg-base-100">
                 <div className="flex-1">
                     <img src='https://images.pexels.com/photos/1251834/pexels-photo-1251834.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt="" />
@@ -107,9 +121,9 @@ const Register = () => {
                                                 message: "Password must have at least 6 characters"
                                             },
                                             validate: {
-                                                // hasUppercase: value => /[A-Z]/.test(value) || "Password must contain at least one uppercase letter",
-                                                // hasLowercase: value => /[a-z]/.test(value) || "Password must contain at least one lowercase letter",
-                                                // hasNumber: value => /[0-9]/.test(value) || "Password must have at least 1 Number"
+                                                hasUppercase: value => /[A-Z]/.test(value) || "Password must contain at least one uppercase letter",
+                                                hasLowercase: value => /[a-z]/.test(value) || "Password must contain at least one lowercase letter",
+                                                hasNumber: value => /[0-9]/.test(value) || "Password must have at least 1 Number"
                                             }
                                         })}
                                     />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import UseAuth from "../../Hook/UseAuth";
 import { API_URL } from "../../constant";
@@ -8,10 +8,17 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const { logInUser, googleLogin, user } = UseAuth();
+    const { logInUser, googleLogin, user, isLoading } = UseAuth();
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
+    const from = location.state || '/'
+
+    useEffect(() => {
+        if (user) {
+            navigate('/');
+        }
+    }, [navigate, user]);
 
     const {
         register,
@@ -26,12 +33,11 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.loggedUser;
                 toast.success('Congrs! Login Sucessfull');
-                navigate(location?.state ? location.state : '/');
-                
+                navigate(from)
+
                 const user = { email };
                 axios.post(`${API_URL}/jwt`, user)
                     .then(res => {
-                        // console.log(res.data);
                         if (res.data.success) {
                         }
                     })
@@ -46,6 +52,9 @@ const Login = () => {
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
+
+    
+    if (user || isLoading) return
 
     return (
         <div className="w-full md:w-8/12 mx-auto rounded-3xl py-20">
@@ -104,10 +113,11 @@ const Login = () => {
                                         .then(result => {
                                             const user = { email };
                                             toast.success('Congrs! Google Login Sucessfull');
-                                            
+                                            // navigate(location?.state ? location.state : '/');
+
                                             axios.post(`${API_URL}/jwt`, user)
-                                            .then(res => {
-                                                    navigate(location?.state ? location.state : '/');
+                                                .then(res => {
+                                                    navigate(from)
                                                     console.log(res.data);
                                                 })
                                         })
