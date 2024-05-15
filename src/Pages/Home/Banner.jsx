@@ -1,7 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import sliderBg from '../../assets/slider-bg.jpg';
-import slider1 from '../../assets/hero-1.webp';
+import slider1 from '../../assets/jbl-headphone.png';
 import slider2 from '../../assets/hero-2.png';
+import slider3 from '../../assets/surface-laptop.png';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -47,8 +48,8 @@ const Banner = () => {
                                     <img src={slider1} alt="" />
                                 </div>
                                 <div className="flex-1">
-                                    <h4 className='text-gray-400 text-2xl font-medium md:text-xl'>Experience the Unseen!</h4>
-                                    <h1 className='text-white text-3xl md:text-6xl pr-40 my-8 font-Jost font-bold'>Your Home Smart Devices & Best Solution</h1>
+                                    <h4 className='text-gray-400 text-2xl font-medium md:text-xl my-4'>Experience the Unseen!</h4>
+                                    <h1 className='text-white text-3xl md:text-6xl  pr-40 mb-8 font-Jost font-bold' style={{ lineHeight: '75px' }}>Find the Perfect Electronics Solutions!</h1>
                                     <p></p>
                                     <button className='btn btn-outline border-[#ff8717] hover:bg-[#eb7d16] rounded-none px-10 text-xl text-white'>Shop Now</button>
                                 </div>
@@ -72,8 +73,8 @@ const Banner = () => {
                                     <img src={slider2} alt="" />
                                 </div>
                                 <div className="flex-1">
-                                    <h4 className='text-gray-400 text-2xl font-medium md:text-xl'>Experience the Unseen!</h4>
-                                    <h1 className='text-white text-3xl md:text-6xl pr-40 my-8 font-Jost font-bold'>Uncovering Stories, One Trip At A Time</h1>
+                                    <h4 className='text-gray-400 text-2xl font-medium md:text-xl my-4'>Experience the Unseen!</h4>
+                                    <h1 className='text-white text-3xl md:text-5xl mb-8 font-Jost font-bold ' style={{ lineHeight: '75px' }}>Discover the Right Electronics for Your Lifestyle.</h1>
                                     <p></p>
                                     <button className='btn btn-outline border-[#ff8717] hover:bg-[#eb7d16] rounded-none px-10 text-xl text-white'>Shop Now</button>
                                 </div>
@@ -94,11 +95,11 @@ const Banner = () => {
                         <div className="w-full md:w-8/12 mx-auto">
                             <div className="flex justify-between items-center gap-10">
                                 <div className="flex-1">
-                                    <img src={slider2} alt="" />
+                                    <img src={slider3} alt="" />
                                 </div>
                                 <div className="flex-1">
-                                    <h4 className='text-gray-400 text-2xl font-medium md:text-xl'>Experience the Unseen!</h4>
-                                    <h1 className='text-white text-3xl md:text-5xl my-8 font-Jost font-bold '>Uncovering Stories, One Trip At A Time</h1>
+                                    <h4 className='text-gray-400 text-2xl font-medium md:text-xl my-4'>Experience the Unseen!</h4>
+                                    <h1 className='text-white text-3xl md:text-6xl  pr-40 mb-8 font-Jost font-bold' style={{ lineHeight: '75px' }}>Uncovering Stories, One Trip At A Time</h1>
                                     <p></p>
                                     <button className='btn btn-outline border-[#ff8717] hover:bg-[#eb7d16] rounded-none px-10 text-xl text-white'>Shop Now</button>
                                 </div>

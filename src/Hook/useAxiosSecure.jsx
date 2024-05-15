@@ -12,9 +12,9 @@ const useAxiosSecure = () => {
         AxiosSecure.interceptors.response.use(res => {
             return res;
         }, error => {
-            console.log('error in the interceptor', error.response);
+            // console.log('error in the interceptor', error.response);
             if (error.response.status === 401 || error.response.status === 403){
-                console.log('logout user');
+                // console.log('logout user');
             }
         })
 

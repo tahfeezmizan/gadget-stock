@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import AddRecommendation from "./AddRecommendation";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
-import { API_URL } from "../../constant";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
+import AddRecommendation from "./AddRecommendation";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 
 const QuriesDetails = () => {
     const [card, setCard] = useState([]);
+    const AxiosSecure = useAxiosSecure();
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`${API_URL}/queries/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                setCard(data)
+        AxiosSecure.get(`/queriesDetails/${id}`)
+            .then(res => {
+                setCard(res.data)
             })
     }, [id]);
 

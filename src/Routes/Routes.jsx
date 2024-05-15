@@ -15,6 +15,7 @@ import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import QueriesBanner from "../Pages/Queries/QueriesBanner";
 import Profile from "../Pages/Profile/Profile";
+import AddRecommendation from "../Pages/Queries/AddRecommendation";
 
 const router = createBrowserRouter([
     {
@@ -91,6 +92,14 @@ const router = createBrowserRouter([
                 element: <>
                     <PrivateRoute>
                         <Profile />
+                    </PrivateRoute>
+                </>
+            },
+            {
+                path: '/addrecommendation',
+                element: <>
+                    <PrivateRoute>
+                        <AddRecommendation />
                     </PrivateRoute>
                 </>
             },

@@ -28,7 +28,7 @@ const Home = () => {
             <div className="hero bg-base-200">
                 <div className="w-full lg:w-5/6 xl:w-8/12 mx-auto px-2 lg:px-0 py-10 md:py-12 lg:py-20">
                     <div className="my-10 pb-5">
-                        <h2 className="text-3xl md:text-5xl font-bold pl-2">TOP Queries</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold pl-2">Top Queries</h2>
                     </div>
 
                     {isLoading ?

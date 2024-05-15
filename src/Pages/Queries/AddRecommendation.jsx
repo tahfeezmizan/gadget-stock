@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
-import UseAuth from "../../Hook/UseAuth";
-import Swal from "sweetalert2";
-import { API_URL } from "../../constant";
 import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
+import UseAuth from "../../Hook/UseAuth";
+import { API_URL } from "../../constant";
 
 const AddRecommendation = ({ card }) => {
     const { user } = UseAuth();
@@ -44,7 +43,7 @@ const AddRecommendation = ({ card }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'success',
@@ -104,7 +103,7 @@ const AddRecommendation = ({ card }) => {
                     </div>
 
 
-                    <button className="btn btn-outline btn-warning rounded-none px-10 text-xl text-white">
+                    <button className="btn bg-[#ff8717] hover:bg-[#eb7d16] border-none rounded-none text-white px-10 text-xl">
                         Add Recommendation
                     </button>
 

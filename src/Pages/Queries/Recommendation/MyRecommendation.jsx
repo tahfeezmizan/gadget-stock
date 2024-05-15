@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet';
 import { RxCross2 } from 'react-icons/rx';
-import Swal from 'sweetalert2';
-import UseAuth from '../../../Hook/UseAuth';
-import useAxiosSecure from '../../../Hook/useAxiosSecure';
 import { API_URL } from '../../../constant';
+import UseAuth from '../../../Hook/UseAuth';
+import React, { useEffect, useState } from 'react';
+import useAxiosSecure from '../../../Hook/useAxiosSecure';
 
 const MyRecommendation = () => {
     const { user } = UseAuth();
@@ -46,7 +46,6 @@ const MyRecommendation = () => {
                             setRecommendation(remaining)
                         }
                     })
-
             }
         });
     }
@@ -79,7 +78,7 @@ const MyRecommendation = () => {
                                         <td className='border'>{data.queryTitle}</td>
                                         <td className='border'>{data.productName}</td>
                                         <td className='border'>{data.recommendedProductName}</td>
-                                        <td className='border'>{data.recommendationReason}</td>
+                                        <td className='border'>{data.recommendationReason.substring(0, 130)}</td>
                                         <th className='border'>
                                             <button className="btn rounded-full" onClick={() => handleDelete(data._id)}><RxCross2 /></button>
                                         </th>

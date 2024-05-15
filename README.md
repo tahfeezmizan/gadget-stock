@@ -23,5 +23,9 @@ Gadgets Stock is an innovative online platform that empowers users to make infor
 Frontend: React, Tailwind CSS, Firebase, Axios
 Backend: Node.js, Express, jwt, MongoDB
 
+## Note: 
+For a more detailed guide and community guidelines, please refer to the documentation provided within the platform. Let's collaborate to make gadget usage a seamless experience for everyone!
+
+
 
 

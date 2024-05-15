@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { API_URL } from "../../constant";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 import BlogsCard from "./BlogsCard";
 
 const Blogs = () => {
-    const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [data, setData] = useState([]);
+    const AxiosSecure = useAxiosSecure();
 
     useEffect(() => {
-        fetch(`${API_URL}/blog-post`)
-            .then(res => res.json())
-            .then(data => {
-                setData(data);
+        AxiosSecure.get(`/blog-post`)
+            .then(res => {
+                setData(res.data);
                 setIsLoading(false);
             });
     }, []);

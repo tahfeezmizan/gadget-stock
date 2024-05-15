@@ -50,7 +50,7 @@ const RecommendationsForMe = () => {
                                     <td className='border'>{data.queryTitle}</td>
                                     <td className='border'>{data.productName}</td>
                                     <td className='border'>{data.recommendedProductName}</td>
-                                    <td className='border'>{data.recommendationReason}</td>
+                                    <td className='border'>{data.recommendationReason.substring(0, 160)}</td>
                                 </tr>
                             </tbody>
                         ))

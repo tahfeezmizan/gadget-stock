@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../Hook/useAxiosSecure';
 import QueriesCard from './QueriesCard';
 import Blogs from '../Blogs/Blogs';
+import { IoGridOutline, IoList } from 'react-icons/io5';
 
 const Queries = () => {
     const AxiosSecure = useAxiosSecure();
@@ -49,8 +50,8 @@ const Queries = () => {
                     <div className="my-10 flex flex-col md:flex-row justify-between items-center gap-6">
                         <h2 className="text-3xl md:text-5xl font-bold pl-2">All Queries</h2>
                         <div className="flex gap-5 items-center">
-                            <button className='btn bg-[#ff8717] hover:bg-[#eb7d16] text-white text-xl  rounded-none' onClick={() => handleGridLayoutChange('grid-cols-2')}>Grid 2</button>
-                            <button className='btn bg-[#ff8717] hover:bg-[#eb7d16] text-white text-xl  rounded-none' onClick={() => handleGridLayoutChange('grid-cols-3')}>Grid 3</button>
+                            <button className='btn bg-[#ff8717] hover:bg-[#eb7d16] text-white text-xl  rounded-none' onClick={() => handleGridLayoutChange('grid-cols-2')}><IoList /></button>
+                            <button className='btn bg-[#ff8717] hover:bg-[#eb7d16] text-white text-xl  rounded-none' onClick={() => handleGridLayoutChange('grid-cols-3')}><IoGridOutline /></button>
 
                             <div className='flex items-center'>
                                 <input
@@ -77,6 +78,7 @@ const Queries = () => {
                                     <QueriesCard
                                         data={data}
                                         key={data._id}
+                                        layout={gridLayout === 'grid-cols-2' ? 'flex' : 'flex-col'}
                                     />
                                 ))}
                         </div>

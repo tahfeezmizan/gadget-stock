@@ -4,6 +4,7 @@ import { API_URL } from "../../../constant";
 
 const AddQueries = () => {
     const { user } = UseAuth();
+console.log('user form add query', user);
 
     const handleAddQuries = e => {
         e.preventDefault();
@@ -12,7 +13,9 @@ const AddQueries = () => {
         const userPhoto = user.photoURL;
 
         const today = new Date();
-        const date = today.toLocaleDateString();
+        const date =  today.getTime(); 
+        console. log(date); 
+        // const date = today.toLocaleDateString();
 
         const form = e.target;
         const productName = form.productName.value;
@@ -41,7 +44,7 @@ const AddQueries = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'success',
@@ -115,7 +118,7 @@ const AddQueries = () => {
                         </div>
 
                         <div className="form-control my-6">
-                            <button className="btn btn-outline btn-warning rounded-none px-10 text-xl text-white">Add New Query</button>
+                            <button className="btn btn-outline bg-[#ff8717] hover:bg-[#eb7d16] border-none rounded-none px-10 text-xl text-white">Add New Query</button>
                         </div>
                     </form>
                 </div >
