@@ -6,8 +6,8 @@ const BlogsCard = ({ data }) => {
 
     return (
         <div class="card bg-base-100 p-6 rounded-md border border-solid border-dark-5">
-            <div className="flex gap-2">
-                <img src={image} className=" w-56" alt="" />
+            <div className="flex flex-col md:flex-row gap-10 md:gap-2">
+                <img src={image} className="w-full md:w-56" alt="" />
                 <div class="px-3 flex flex-col justify-between">
                     <div className="flex justify-between pb-3">
                         <p class="flex gap-2 items-center font-Roboto"><CiCalendarDate /> {date}</p>

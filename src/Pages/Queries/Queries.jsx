@@ -9,7 +9,7 @@ const Queries = () => {
     const [card, setCard] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [searchText, setSearchText] = useState('');
-    const [gridLayout, setGridLayout] = useState('grid-cols-3');
+    const [gridLayout, setGridLayout] = useState('lg:grid-cols-3');
 
     useEffect(() => {
         AxiosSecure.get(`/queries`)
@@ -73,15 +73,15 @@ const Queries = () => {
                             <span className="loading loading-spinner text-error text-5xl"></span>
                         </div> :
                         <div className={`grid ${gridLayout} gap-10`}>
-                            {
-                                card?.map(data => (
-                                    <QueriesCard
-                                        data={data}
-                                        key={data._id}
-                                        layout={gridLayout === 'grid-cols-2' ? 'flex' : 'flex-col'}
-                                    />
-                                ))}
-                        </div>
+                        {
+                            card?.map(data => (
+                                <QueriesCard
+                                    data={data}
+                                    key={data._id}
+                                    layout={gridLayout === 'grid-cols-2' ? 'flex' : 'flex-col'}
+                                />
+                            ))}
+                    </div>
                     }
                 </div>
             </div>
