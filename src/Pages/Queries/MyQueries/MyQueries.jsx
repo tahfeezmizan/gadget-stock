@@ -38,13 +38,13 @@ const MyQueries = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        if (data.deletedCount > 0) {
+                        if (data?.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your Queries has been deleted.",
                                 icon: "success"
                             });
-                            const remaining = card.filter(item => item._id !== id);
+                            const remaining = card?.filter(item => item._id !== id);
                             setCard(remaining)
                         }
                     })
@@ -64,7 +64,7 @@ const MyQueries = () => {
                     <div className="w-full flex justify-center items-center">
                         <span className="loading loading-spinner text-error text-5xl"></span>
                     </div>)
-                    : card.length > 0 ? (
+                    : card?.length > 0 ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
                             {
                                 card?.map(data => <MyQueriesCard

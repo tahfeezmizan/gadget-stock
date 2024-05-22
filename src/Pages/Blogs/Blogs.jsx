@@ -10,7 +10,7 @@ const Blogs = () => {
     useEffect(() => {
         AxiosSecure.get(`/blog-post`)
             .then(res => {
-                setData(res.data);
+                setData(res?.data);
                 setIsLoading(false);
             });
     }, []);
@@ -21,14 +21,14 @@ const Blogs = () => {
 
                 <div className="my-10">
                     <h2 className="text-3xl md:text-5xl font-Jost font-bold pb-5">Latest Blog</h2>
-                    <p className="font-Roboto text-lg">There are many variations of passages of Lorem Ipsum available</p>
+                    <p className="font-Roboto text-lg">Explore Cutting-Edge Alternatives You Won't Find Elsewhere</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 mt-10 gap-10 sm:mb-4 md:mb-4">
                     {
                         data?.map(data => <BlogsCard
                             data={data}
-                            key={data._id}
+                            key={data?._id}
                         ></BlogsCard>)
                     }
                 </div>

@@ -9,7 +9,7 @@ const RootLayout = () => {
         <div>
             <Navbar></Navbar>
             {
-                navigation.state === 'loading' ? <span className="loading loading-spinner text-error"></span>
+                navigation?.state === 'loading' ? <span className="loading loading-spinner text-error"></span>
                     : <Outlet></Outlet>
             }
             <Footer></Footer>

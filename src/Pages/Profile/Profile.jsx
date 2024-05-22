@@ -10,9 +10,9 @@ const Profile = () => {
 
     useEffect(() => {
         if (user) {
-            setDisplayName(user.displayName || '');
-            setEmail(user.email || '');
-            setPhotoURL(user.photoURL || '');
+            setDisplayName(user?.displayName || '');
+            setEmail(user?.email || '');
+            setPhotoURL(user?.photoURL || '');
         }
     }, [user]);
 
@@ -57,7 +57,7 @@ const Profile = () => {
                             id="displayName"
                             placeholder='Change Name'
                             value={displayName}
-                            onChange={(e) => setDisplayName(e.target.value)}
+                            onChange={(e) => setDisplayName(e.target?.value)}
                             className="w-full border rounded-md p-2 mb-4"
                         />
 
@@ -67,7 +67,7 @@ const Profile = () => {
                             id="photoURL"
                             placeholder='Add New Photo'
                             value={photoURL}
-                            onChange={(e) => setPhotoURL(e.target.value)}
+                            onChange={(e) => setPhotoURL(e.target?.value)}
                             className="w-full border rounded-md p-2 mb-4"
                         />
 

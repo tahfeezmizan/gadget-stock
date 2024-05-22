@@ -59,7 +59,7 @@ const githubLogin = () => {
             if (currentUser) {
                 setUser(currentUser);
                 setIsLoading(false);
-                console.log(currentUser);
+                // console.log(currentUser);
 
                 if (currentUser) {
                     axios.post(`${API_URL}/jwt `, loggedUser, { withCredentials: true })

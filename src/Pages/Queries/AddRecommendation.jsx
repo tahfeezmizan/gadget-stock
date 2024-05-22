@@ -11,14 +11,14 @@ const AddRecommendation = ({ card }) => {
         const today = new Date();
         const form = e.target;
 
-        const recommenderEmail = user.email;
-        const recommenderName = user.displayName;
-        const date = today.toLocaleDateString();
+        const recommenderEmail = user?.email;
+        const recommenderName = user?.displayName;
+        const date = today?.toLocaleDateString();
 
-        const recommendationTitle = form.recommendationTitle.value;
-        const recommendedProductName = form.recommendedProductName.value;
-        const recommendedImage = form.recommendedImage.value;
-        const recommendationReason = form.recommendationReason.value;
+        const recommendationTitle = form?.recommendationTitle?.value;
+        const recommendedProductName = form?.recommendedProductName?.value;
+        const recommendedImage = form?.recommendedImage?.value;
+        const recommendationReason = form?.recommendationReason?.value;
 
         //query data and query creator data
         const queryId = card?._id;

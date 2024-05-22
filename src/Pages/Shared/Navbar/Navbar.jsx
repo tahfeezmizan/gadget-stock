@@ -92,6 +92,7 @@ const Navbar = () => {
                                     logOut()
                                     if (logOut) {
                                         toast.success('User has log out!');
+                                        
                                     }
                                 }}><a>Logout</a></Link></li>
                             </ul>

@@ -4,25 +4,25 @@ import { API_URL } from "../../../constant";
 
 const AddQueries = () => {
     const { user } = UseAuth();
-console.log('user form add query', user);
+    // console.log('user form add query', user);
 
     const handleAddQuries = e => {
         e.preventDefault();
-        const email = user.email;
-        const userName = user.displayName;
-        const userPhoto = user.photoURL;
+        const email = user?.email;
+        const userName = user?.displayName;
+        const userPhoto = user?.photoURL;
 
         const today = new Date();
-        const date =  today.getTime(); 
-        console. log(date); 
+        const date = today?.getTime();
+        console.log(date);
         // const date = today.toLocaleDateString();
 
         const form = e.target;
-        const productName = form.productName.value;
-        const brandName = form.brandName.value;
-        const imageUrl = form.imageUrl.value;
-        const queryTitle = form.queryTitle.value;
-        const boycottingReason = form.boycottingReason.value;
+        const productName = form?.productName?.value;
+        const brandName = form?.brandName?.value;
+        const imageUrl = form?.imageUrl?.value;
+        const queryTitle = form?.queryTitle?.value;
+        const boycottingReason = form?.boycottingReason?.value;
 
         const addQuery = {
             email,
@@ -35,7 +35,7 @@ console.log('user form add query', user);
             boycottingReason,
             date,
         }
-        console.log(addQuery)
+        // console.log(addQuery)
 
         fetch(`${API_URL}/queries`, {
             method: "POST",

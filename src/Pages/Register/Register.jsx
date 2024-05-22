@@ -38,7 +38,7 @@ const Register = () => {
                     })
             })
             .catch(error => {
-                const errorMessage = error.message;
+                const errorMessage = error?.message;
                 toast.error(`${errorMessage}`)
             });
     };

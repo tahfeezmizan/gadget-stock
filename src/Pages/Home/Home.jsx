@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { API_URL } from '../../constant';
+import useAxiosSecure from '../../Hook/useAxiosSecure';
+import Blogs from '../Blogs/Blogs';
 import QueriesCard from '../Queries/QueriesCard';
+import Sponsors from '../Sponsors/Sponsors';
 import Banner from './Banner';
 import TinyBanner from './TinyBanner';
-import Sponsors from '../Sponsors/Sponsors';
-import Blogs from '../Blogs/Blogs';
 
 const Home = () => {
     const [card, setCard] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const AxiosSecure = useAxiosSecure();
 
     useEffect(() => {
-        fetch(`${API_URL}/queries`)
-            .then(res => res.json())
-            .then(data => {
-                setCard(data)
+        AxiosSecure.get(`/queries`)
+            .then(res => {
+                setCard(res.data)
                 setIsLoading(false)
             })
     }, []);
@@ -38,9 +37,9 @@ const Home = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
                             {
-                                card.slice(0, 6)?.map(data => <QueriesCard
+                                card?.slice(0, 6)?.map(data => <QueriesCard
                                     data={data}
-                                    key={card._id}></QueriesCard>)
+                                    key={card?._id}></QueriesCard>)
                             }
                         </div>
                     }

@@ -22,16 +22,16 @@ const UpdateQueries = () => {
         // const today = new Date();
         // const date = today.toLocaleDateString();
         const form = e.target;
-        const productName = form.productName.value;
-        const brandName = form.brandName.value;
-        const imageUrl = form.imageUrl.value;
-        const queryTitle = form.queryTitle.value;
-        const boycottingReason = form.boycottingReason.value;
+        const productName = form?.productName?.value;
+        const brandName = form?.brandName?.value;
+        const imageUrl = form?.imageUrl?.value;
+        const queryTitle = form?.queryTitle?.value;
+        const boycottingReason = form?.boycottingReason?.value;
 
         const updateQuery = {
             productName, imageUrl, brandName, queryTitle, boycottingReason,
         }
-        console.log(updateQuery);
+        // console.log(updateQuery);
 
         // update method
         fetch(`${API_URL}/queriesupdate/${id}`, {
@@ -41,8 +41,8 @@ const UpdateQueries = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                if (data.modifiedCount > 0) {
+                // console.log(data);
+                if (data?.modifiedCount > 0) {
                     Swal.fire({
                         title: 'success',
                         text: 'Queries Update Successfully',
@@ -67,7 +67,7 @@ const UpdateQueries = () => {
                                 <input
                                     type="text" name="productName"
                                     placeholder="Product Name"
-                                    defaultValue={data.productName}
+                                    defaultValue={data?.productName}
                                     className="input input-bordered font-semibold w-full max-w-xs"
                                     required
                                 />
@@ -78,7 +78,7 @@ const UpdateQueries = () => {
                                 <input
                                     type="text" name="brandName"
                                     placeholder="Brand Name"
-                                    defaultValue={data.brandName}
+                                    defaultValue={data?.brandName}
                                     className="input input-bordered w-full max-w-xs"
                                     required
                                 />
@@ -90,7 +90,7 @@ const UpdateQueries = () => {
                                 <input
                                     type="text" name="queryTitle"
                                     placeholder="Query Title"
-                                    defaultValue={data.queryTitle}
+                                    defaultValue={data?.queryTitle}
                                     className="input input-bordered w-full max-w-xs"
                                     required
                                 />
@@ -100,7 +100,7 @@ const UpdateQueries = () => {
                                 <input
                                     type="text" name="imageUrl"
                                     placeholder="Product ImageUrl Url"
-                                    defaultValue={data.imageUrl}
+                                    defaultValue={data?.imageUrl}
                                     className="input input-bordered w-full max-w-xs"
                                     required
                                 />
@@ -111,7 +111,7 @@ const UpdateQueries = () => {
                             <textarea
                                 name='boycottingReason'
                                 placeholder="Boycotting Reason Details"
-                                defaultValue={data.boycottingReason}
+                                defaultValue={data?.boycottingReason}
                                 className="textarea textarea-bordered  w-full"
                                 required></textarea>
                         </div>

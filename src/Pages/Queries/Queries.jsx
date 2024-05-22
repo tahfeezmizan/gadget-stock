@@ -24,7 +24,7 @@ const Queries = () => {
     };
 
     const handleChange = (event) => {
-        setSearchText(event.target.value);
+        setSearchText(event.target?.value);
     };
 
     const handleSearch = () => {
@@ -77,7 +77,7 @@ const Queries = () => {
                             card?.map(data => (
                                 <QueriesCard
                                     data={data}
-                                    key={data._id}
+                                    key={data?._id}
                                     layout={gridLayout === 'grid-cols-2' ? 'flex' : 'flex-col'}
                                 />
                             ))}

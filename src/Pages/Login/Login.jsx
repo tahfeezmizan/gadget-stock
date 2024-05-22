@@ -39,7 +39,8 @@ const Login = () => {
                 const user = { email };
                 axios.post(`${API_URL}/jwt`, user)
                     .then(res => {
-                        if (res.data.success) {
+                        if (res.data?.success) {
+                            // console.log(res.data);
                         }
                     })
             })
@@ -80,7 +81,7 @@ const Login = () => {
 
                                     {...register("email", { required: true })}
                                 />
-                                {errors.email && <span className="text-xs text-red-500">Email is required</span>}
+                                {errors?.email && <span className="text-xs text-red-500">Email is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">

@@ -1,21 +1,21 @@
-import { createBrowserRouter } from "react-router-dom";
-import RootLayout from "../Layout/RootLayout";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
-import AddQueries from "../Pages/Queries/MyQueries/AddQueries";
-import MyQueries from "../Pages/Queries/MyQueries/MyQueries";
-import MyQueriesBanner from "../Pages/Queries/MyQueries/MyQueriesBanner";
-import UpdateQueries from "../Pages/Queries/MyQueries/UpdateQueries";
+import PrivateRoute from "./PrivateRoute";
+import RootLayout from "../Layout/RootLayout";
 import Queries from "../Pages/Queries/Queries";
+import Profile from "../Pages/Profile/Profile";
+import Register from "../Pages/Register/Register";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import { createBrowserRouter } from "react-router-dom";
 import QuriesDetails from "../Pages/Queries/QuriesDetails";
+import QueriesBanner from "../Pages/Queries/QueriesBanner";
+import MyQueries from "../Pages/Queries/MyQueries/MyQueries";
+import AddQueries from "../Pages/Queries/MyQueries/AddQueries";
+import AddRecommendation from "../Pages/Queries/AddRecommendation";
+import UpdateQueries from "../Pages/Queries/MyQueries/UpdateQueries";
+import MyQueriesBanner from "../Pages/Queries/MyQueries/MyQueriesBanner";
 import MyRecommendation from "../Pages/Queries/Recommendation/MyRecommendation";
 import RecommendationsForMe from "../Pages/Queries/Recommendation/RecommendationsForMe";
-import Register from "../Pages/Register/Register";
-import PrivateRoute from "./PrivateRoute";
-import ErrorPage from "../Pages/ErrorPage/ErrorPage";
-import QueriesBanner from "../Pages/Queries/QueriesBanner";
-import Profile from "../Pages/Profile/Profile";
-import AddRecommendation from "../Pages/Queries/AddRecommendation";
 
 const router = createBrowserRouter([
     {

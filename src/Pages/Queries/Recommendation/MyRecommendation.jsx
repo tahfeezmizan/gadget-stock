@@ -55,7 +55,7 @@ const MyRecommendation = () => {
             <Helmet>
                 <title>My Recommendation - Gadgets Stock React Template</title>
             </Helmet>
-            <h1 className="text-2xl pb-5 font-bold">My Recommendation <span className='bg-[#ff8717] text-white  text-base px-4 rounded-3xl'>{recommendation.length}</span> </h1>
+            <h1 className="text-2xl pb-5 font-bold">My Recommendation <span className='bg-[#ff8717] text-white  text-base px-4 rounded-3xl'>{recommendation?.length}</span> </h1>
 
             <div className="overflow-x-auto">
                 {recommendation?.length > 0 ? (
@@ -72,15 +72,15 @@ const MyRecommendation = () => {
                         </thead>
                         {
                             recommendation?.map(data => (
-                                <tbody key={data._id}>
+                                <tbody key={data?._id}>
                                     <tr>
-                                        <td className='border'><img className="w-16" src={data.imageUrl} alt="" /></td>
-                                        <td className='border'>{data.queryTitle}</td>
-                                        <td className='border'>{data.productName}</td>
-                                        <td className='border'>{data.recommendedProductName}</td>
-                                        <td className='border'>{data.recommendationReason.substring(0, 130)}</td>
+                                        <td className='border'><img className="w-16" src={data?.imageUrl} alt="" /></td>
+                                        <td className='border'>{data?.queryTitle}</td>
+                                        <td className='border'>{data?.productName}</td>
+                                        <td className='border'>{data?.recommendedProductName}</td>
+                                        <td className='border'>{data?.recommendationReason?.substring(0, 130)}</td>
                                         <th className='border'>
-                                            <button className="btn rounded-full" onClick={() => handleDelete(data._id)}><RxCross2 /></button>
+                                            <button className="btn rounded-full" onClick={() => handleDelete(data?._id)}><RxCross2 /></button>
                                         </th>
                                     </tr>
                                 </tbody>
