@@ -1,6 +1,6 @@
-#### Gadgets Stock
+## Gadgets Stock
 
-Live Site URL: https://gadgetsstock-9e801.web.app/
+Live Site URL: https://gadgetsstock-9e801.web.app
 
 ## Description
 
