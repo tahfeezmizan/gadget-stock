@@ -63,7 +63,6 @@ const Banner = () => {
                         backgroundPosition: 'center',
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
-
                     }}
                 >
                     <div className="h-full  flex items-center"  >
@@ -88,7 +87,6 @@ const Banner = () => {
                         backgroundPosition: 'center',
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
-
                     }}
                 >
                     <div className="h-full  flex items-center"  >
